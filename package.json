@@ -10,10 +10,17 @@
     "type": "git",
     "url": "git+https://github.com/DigitalCrafts-September-2016-Cohort/Fabular.git"
   },
-  "author": "autumn coleman, Che Blankenship, Keyur Patel",
+  "author": "Autumn Coleman, Che Blankenship, Keyur Patel",
   "license": "ISC",
   "bugs": {
     "url": "https://github.com/DigitalCrafts-September-2016-Cohort/Fabular/issues"
   },
-  "homepage": "https://github.com/DigitalCrafts-September-2016-Cohort/Fabular#readme"
+  "homepage": "https://github.com/DigitalCrafts-September-2016-Cohort/Fabular#readme",
+  "dependencies": {
+    "bluebird": "^3.4.6",
+    "body-parser": "^1.15.2",
+    "express": "^4.14.0",
+    "lodash": "^4.17.2",
+    "mongoose": "^4.7.3"
+  }
 }
