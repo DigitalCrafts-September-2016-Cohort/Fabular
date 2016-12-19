@@ -1,0 +1,19 @@
+{
+  "name": "fabular",
+  "version": "1.0.0",
+  "description": "Commuincation device",
+  "main": "angular.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/DigitalCrafts-September-2016-Cohort/Fabular.git"
+  },
+  "author": "autumn coleman, Che Blankenship, Keyur Patel",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/DigitalCrafts-September-2016-Cohort/Fabular/issues"
+  },
+  "homepage": "https://github.com/DigitalCrafts-September-2016-Cohort/Fabular#readme"
+}

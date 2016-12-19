@@ -1,0 +1,24 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8">
+    <title>Memory Game</title>
+    <link rel="stylesheet" type="text/css" href="style.css">
+
+  </head>
+  <script src="angular.js"></script>
+  <script src="fabular.js"></script>
+
+  <body>
+    <div ng-app="fabular" ng-controller="fabularController">
+      <div class="" style="text-align:center;">
+        <div class="cont">
+          <img ng-src="images/{{randomfruit}}.png"/>
+          <div ng-repeat="fruit in fruits">
+            <button><img ng-src="images/{{fruit}}.png"/></button>
+          </div>
+        </div>
+      </div>
+    </div>
+  </body>
+</html>
