@@ -3,9 +3,7 @@ var bodyParser = require('body-parser');
 var _ = require('lodash');
 var mongoose = require('mongoose');
 var bluebird = require('bluebird');
-
 var app = express();
-
 app.use(express.static('static'));
 app.use(bodyParser.json());
 

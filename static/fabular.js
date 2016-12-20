@@ -39,6 +39,8 @@ return service;
 });
 
 app.controller('fabularController', function($scope,fabularService) {
+  $scope.countWins = 0;
+  $scope.Again = function(){
   fabularService.getThings().success(function(data){
     console.log(data);
     $scope.currentIndex = 0;
@@ -92,13 +94,20 @@ app.controller('fabularController', function($scope,fabularService) {
         console.log($scope.sentence);
         textToSpeak($scope.item);
         setTimeout(function(){ textToSpeak($scope.sentence); }, 1000);
-      }
+        setTimeout(function(){
+          textToSpeak("Good job on asking for"+$scope.item);
+          $scope.countWins +=1;
+          console.log("Wins: "+$scope.countWins);}, 1200);
+        }
       else {
         textToSpeak(someThing+ "Close, but not quite right. Let's try again");
       }
     }
   };
   });
-
-
+};
+$scope.Again();
+$scope.playAgain = function(){
+  $scope.Again();
+};
 });
