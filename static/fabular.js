@@ -32,9 +32,17 @@ app.controller('fabularController', function($scope,fabularService) {
     $scope.expectedResult = ['I','want',$scope.item];
     console.log("currentIndex at first"+$scope.currentIndex);
     console.log($scope.expectedResult);
+    console.log($scope.expectedResult[0]);
     $scope.firstClicked = function(item){
-      $scope.currentIndex += 1;
-      console.log($scope.currentIndex);
+      console.log($scope.item);
+      if(item === 'I'){
+        console.log('check');
+        $scope.currentIndex += 1;
+        console.log($scope.currentIndex);
+      }
+      else {
+        return;
+      }
     };
     $scope.secondClicked = function(item){
       $scope.currentIndex += 1;
