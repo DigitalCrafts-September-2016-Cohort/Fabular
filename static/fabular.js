@@ -49,6 +49,7 @@ app.controller('fabularController', function($scope,fabularService) {
     $scope.expectedResult = ['I','want',$scope.item,'please'];
     console.log("currentIndex at first"+$scope.currentIndex);
     console.log($scope.expectedResult);
+    console.log($scope.expectedResult[0]);
     $scope.firstClicked = function(item){
       if(item === $scope.expectedResult[0]){
         textToSpeak(item);
