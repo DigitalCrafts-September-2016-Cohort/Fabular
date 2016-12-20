@@ -45,15 +45,19 @@ app.controller('fabularController', function($scope,fabularService) {
     $scope.item = data[Math.floor((Math.random() * 3))];
     textToSpeak("Ask for "+$scope.item);
     $scope.things = data;
-    $scope.expectedResult = ['I','want',$scope.item];
+    $scope.sentence = '';
+    $scope.expectedResult = ['I','want',$scope.item,'please'];
     console.log("currentIndex at first"+$scope.currentIndex);
     console.log($scope.expectedResult);
     $scope.firstClicked = function(item){
-      textToSpeak("Good Job");
+      textToSpeak(item);
+      $scope.sentence += item;
       $scope.currentIndex += 1;
       console.log($scope.currentIndex);
     };
     $scope.secondClicked = function(item){
+      textToSpeak(item);
+      $scope.sentence += " "+item;
       $scope.currentIndex += 1;
       console.log($scope.currentIndex);
     };
@@ -66,9 +70,13 @@ app.controller('fabularController', function($scope,fabularService) {
       };
       if (someThing === $scope.item) {
         $scope.currentIndex += 1;
+        $scope.sentence += " "+$scope.item;
+        console.log($scope.sentence);
+        textToSpeak($scope.item);
+        setTimeout(function(){ textToSpeak($scope.sentence); }, 1000);
       }
       else {
-        console.log("Not same");
+        textToSpeak(someThing+ "Close, but not quite right. Let's try again");
       }
     };
   });
