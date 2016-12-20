@@ -3,7 +3,7 @@
     <img ng-src="images/{{item}}.png"/>
 </div>
 <div class="chainUrl">
-  <span ng-if="currentIndex === 1 || currentIndex === 2 || currentIndex === 3">{{expectedResult[0]}}</span><span ng-if="currentIndex === 2 || currentIndex === 3">{{expectedResult[1]}}</span><span ng-if="currentIndex === 3">{{expectedResult[2]}}</span>
+  <span ng-if="currentIndex === 1 || currentIndex === 2 || currentIndex === 3"><img ng-src="images/{{expectedResult[0]}}.png"/></span><span ng-if="currentIndex === 2 || currentIndex === 3"><img ng-src="images/{{expectedResult[1]}}.png"/></span><span ng-if="currentIndex === 3"><img ng-src="images/{{expectedResult[2]}}.png"/></span>
 </div>
 <div ng-if="currentIndex === 0">
   <button ng-click="firstClicked(expectedResult[0])"><img ng-src="images/{{expectedResult[0]}}.png"/></button>
