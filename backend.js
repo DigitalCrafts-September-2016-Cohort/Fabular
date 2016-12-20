@@ -22,8 +22,10 @@ const Cards = mongoose.model('card',{
 app.get('/things',function(request,response){
 Cards.find()
   .then(function(obj){
-    console.log(obj[0].items);
-    response.send(obj);
+    // let items = obj[0].items;
+    // _.shuffle(items);
+    // console.log(items);
+    response.send(_.shuffle(obj[0].items).slice(0,3));
     })
     .catch(function(err){
       console.log(err.stash);
