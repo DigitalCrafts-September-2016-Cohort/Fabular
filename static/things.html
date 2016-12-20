@@ -1,18 +1,22 @@
 <div class="prompt">
-    <span>Ask for </span>
-    <img ng-src="images/{{item}}.png"/>
+    <span><img class="promptPic" src="images/ask.png" alt="ask for" /></span>
+    <img class="promptPic" ng-src="images/{{item}}.png"/>
 </div>
 <div class="chainUrl">
-  <span ng-if="currentIndex === 1 || currentIndex === 2 || currentIndex === 3"><img ng-src="images/{{expectedResult[0]}}.png"/></span><span ng-if="currentIndex === 2 || currentIndex === 3"><img ng-src="images/{{expectedResult[1]}}.png"/></span><span ng-if="currentIndex === 3"><img ng-src="images/{{expectedResult[2]}}.png"/></span>
+  <span ng-if="currentIndex === 1 || currentIndex === 2 || currentIndex === 3"><img class="chainPic" ng-src="images/{{expectedResult[0]}}.png"/></span>
+  <span ng-if="currentIndex === 2 || currentIndex === 3"><img class="chainPic" ng-src="images/{{expectedResult[1]}}.png"/></span>
+  <span ng-if="currentIndex === 3"><img class="chainPic" ng-src="images/{{expectedResult[2]}}.png"/></span>
 </div>
-<div ng-if="currentIndex === 0">
-  <button ng-click="firstClicked(expectedResult[0])"><img ng-src="images/{{expectedResult[0]}}.png"/></button>
-</div>
-<div ng-if="currentIndex === 1">
-  <button ng-click="secondClicked(expectedResult[1])"><img ng-src="images/{{expectedResult[1]}}.png"/></button>
-</div>
-<div class="board" ng-if="currentIndex === 2">
-  <div ng-repeat="thing in things">
-    <button id="{{thing}}" ng-disabled="checkDisabled(thing)"><img ng-click="thirdClicked(thing)" ng-src="images/{{thing}}.png"/></button>
+<div class="options">
+  <div ng-if="currentIndex === 0">
+    <button ng-click="firstClicked(expectedResult[0])"><img ng-src="images/{{expectedResult[0]}}.png"/></button>
+  </div>
+  <div ng-if="currentIndex === 1">
+    <button ng-click="secondClicked(expectedResult[1])"><img ng-src="images/{{expectedResult[1]}}.png"/></button>
+  </div>
+  <div class="board" ng-if="currentIndex === 2">
+    <div ng-repeat="thing in things">
+      <button id="{{thing}}" ng-disabled="checkDisabled(thing)"><img ng-click="thirdClicked(thing)" ng-src="images/{{thing}}.png"/></button>
+    </div>
   </div>
 </div>
