@@ -24,6 +24,7 @@ app.config(function($stateProvider,$urlRouterProvider){
   });
   $urlRouterProvider.otherwise('/things');
 });
+
 app.factory('fabularService',function($http){
   var service = {};
   service.getThings = function(){
@@ -42,11 +43,13 @@ app.controller('fabularController', function($scope,fabularService) {
     console.log(data);
     $scope.currentIndex = 0;
     $scope.item = data[Math.floor((Math.random() * 3))];
+    textToSpeak("Ask for "+$scope.item);
     $scope.things = data;
     $scope.expectedResult = ['I','want',$scope.item];
     console.log("currentIndex at first"+$scope.currentIndex);
     console.log($scope.expectedResult);
     $scope.firstClicked = function(item){
+      textToSpeak("Good Job");
       $scope.currentIndex += 1;
       console.log($scope.currentIndex);
     };
