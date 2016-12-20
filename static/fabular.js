@@ -50,10 +50,14 @@ app.controller('fabularController', function($scope,fabularService) {
     console.log("currentIndex at first"+$scope.currentIndex);
     console.log($scope.expectedResult);
     $scope.firstClicked = function(item){
-      textToSpeak(item);
-      $scope.sentence += item;
-      $scope.currentIndex += 1;
-      console.log($scope.currentIndex);
+      if(item === $scope.expectedResult[0]){
+        textToSpeak(item);
+        $scope.sentence += item;
+        $scope.currentIndex += 1;
+        console.log($scope.currentIndex);
+      }else{
+        textToSpeak("Close, but not quite right. Let's try again");
+      }
     };
     $scope.secondClicked = function(item){
       textToSpeak(item);
