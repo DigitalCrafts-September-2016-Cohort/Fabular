@@ -51,28 +51,41 @@ app.controller('fabularController', function($scope,fabularService) {
     console.log($scope.expectedResult);
     console.log($scope.expectedResult[0]);
     $scope.firstClicked = function(item){
-      if(item === $scope.expectedResult[0]){
-        textToSpeak(item);
-        $scope.sentence += item;
-        $scope.currentIndex += 1;
-        console.log($scope.currentIndex);
-      }else{
-        textToSpeak("Close, but not quite right. Let's try again");
+      if($scope.currentIndex === 0){
+        console.log('first click');
+        if(item === $scope.expectedResult[0]){
+          textToSpeak(item);
+          $scope.sentence += item;
+          $scope.currentIndex += 1;
+          console.log($scope.currentIndex);
+        }else{
+          textToSpeak("Close, but not quite right. Let's try again");
+        }
       }
     };
     $scope.secondClicked = function(item){
-      textToSpeak(item);
-      $scope.sentence += " "+item;
-      $scope.currentIndex += 1;
-      console.log($scope.currentIndex);
+      if($scope.currentIndex === 1){
+        console.log('second click');
+        if(item === $scope.expectedResult[1]){
+          textToSpeak(item);
+          $scope.sentence += " "+item;
+          $scope.currentIndex += 1;
+          console.log($scope.currentIndex);
+        } else {
+          textToSpeak("Close, but not quite right. Let's try again");
+        }
+      }
+
     };
     $scope.thirdClicked = function(someThing) {
-      console.log("click!");
-      $scope.checkDisabled = function(item) {
-        if (item !== $scope.item) {
-          return true;
-        }
-      };
+      if($scope.currentIndex === 2){
+        $scope.checkDisabled = function(item) {
+          if (item !== $scope.item) {
+            return true;
+          }
+        };
+
+
       if (someThing === $scope.item) {
         $scope.currentIndex += 1;
         $scope.sentence += " "+$scope.item;
@@ -83,7 +96,8 @@ app.controller('fabularController', function($scope,fabularService) {
       else {
         textToSpeak(someThing+ "Close, but not quite right. Let's try again");
       }
-    };
+    }
+  };
   });
 
 
