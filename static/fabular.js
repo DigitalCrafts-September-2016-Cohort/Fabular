@@ -48,7 +48,7 @@ app.controller('fabularController', function($scope,fabularService) {
         }
       };
       if (someThing === $scope.item) {
-        console.log("Same");
+        $scope.currentIndex += 1;
       }
       else {
         console.log("Not same");

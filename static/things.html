@@ -1,11 +1,15 @@
 <div class="prompt">
+    <span>Ask for </span>
     <img ng-src="images/{{item}}.png"/>
 </div>
-<div>
-  <button ng-if="currentIndex === 0" ng-click="firstClicked(expectedResult[0])"><img ng-src="images/{{expectedResult[0]}}.png"/></button>
+<div class="chainUrl">
+  <span ng-if="currentIndex === 1 || currentIndex === 2 || currentIndex === 3">{{expectedResult[0]}}</span><span ng-if="currentIndex === 2 || currentIndex === 3">{{expectedResult[1]}}</span><span ng-if="currentIndex === 3">{{expectedResult[2]}}</span>
 </div>
-<div>
-  <button ng-if="currentIndex === 1" ng-click="secondClicked(expectedResult[1])"><img ng-src="images/{{expectedResult[1]}}.png"/></button>
+<div ng-if="currentIndex === 0">
+  <button ng-click="firstClicked(expectedResult[0])"><img ng-src="images/{{expectedResult[0]}}.png"/></button>
+</div>
+<div ng-if="currentIndex === 1">
+  <button ng-click="secondClicked(expectedResult[1])"><img ng-src="images/{{expectedResult[1]}}.png"/></button>
 </div>
 <div class="board" ng-if="currentIndex === 2">
   <div ng-repeat="thing in things">
