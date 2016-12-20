@@ -24,11 +24,26 @@ return service;
 });
 
 app.controller('fabularController', function($scope,fabularService) {
-// fruits = ['apple','banana','berries','cranberries','grapes','kiwi','pineapple','strawberry'];
-fabularService.getThings().success(function(data){
-  console.log(data);
-  $scope.item = data[Math.floor((Math.random() * 3))];
-  $scope.things = data;
-});
+  // fruits = ['apple','banana','berries','cranberries','grapes','kiwi','pineapple','strawberry'];
+  fabularService.getThings().success(function(data){
+    console.log(data);
+    $scope.item = data[Math.floor((Math.random() * 3))];
+    $scope.things = data;
+    $scope.click = function(someThing) {
+      console.log("click!");
+      $scope.checkDisabled = function(item) {
+        if (item !== $scope.item) {
+          return true;
+        }
+      };
+      if (someThing === $scope.item) {
+        console.log("Same");
+      }
+      else {
+        console.log("Not same");
+      }
+    };
+  });
+
 
 });

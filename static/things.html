@@ -1,8 +1,11 @@
-<div class="" style="text-align:center;">
-  <div class="cont">
+<div class="prompt">
     <img ng-src="images/{{item}}.png"/>
-    <div ng-repeat="thing in things">
-      <button><img ng-src="images/{{thing}}.png"/></button>
-    </div>
+</div>
+<div class="chain">
+
+</div>
+<div class="board">
+  <div ng-repeat="thing in things">
+    <button id="{{thing}}" ng-disabled="checkDisabled(thing)"><img ng-click="click(thing)" ng-src="images/{{thing}}.png"/></button>
   </div>
 </div>

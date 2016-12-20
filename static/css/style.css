@@ -1,0 +1,20 @@
+.prompt {
+  display: flex;
+  justify-content: center;
+
+}
+
+.chain {
+
+}
+
+.board {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.disabled {
+  color: gray;
+
+}
