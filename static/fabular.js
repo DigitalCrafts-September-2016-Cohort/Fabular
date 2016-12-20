@@ -26,10 +26,21 @@ return service;
 app.controller('fabularController', function($scope,fabularService) {
   fabularService.getThings().success(function(data){
     console.log(data);
+    $scope.currentIndex = 0;
     $scope.item = data[Math.floor((Math.random() * 3))];
     $scope.things = data;
-    $scope.chain = ['want',$scope.item];
-    $scope.click = function(someThing) {
+    $scope.expectedResult = ['I','want',$scope.item];
+    console.log("currentIndex at first"+$scope.currentIndex);
+    console.log($scope.expectedResult);
+    $scope.firstClicked = function(item){
+      $scope.currentIndex += 1;
+      console.log($scope.currentIndex);
+    };
+    $scope.secondClicked = function(item){
+      $scope.currentIndex += 1;
+      console.log($scope.currentIndex);
+    };
+    $scope.thirdClicked = function(someThing) {
       console.log("click!");
       $scope.checkDisabled = function(item) {
         if (item !== $scope.item) {
