@@ -27,7 +27,7 @@ app.controller('fabularController', function($scope,fabularService) {
 // fruits = ['apple','banana','berries','cranberries','grapes','kiwi','pineapple','strawberry'];
 fabularService.getThings().success(function(data){
   console.log(data);
-  $scope.fruits = data;
+  $scope.fruits = data[0].items;
 });
 
 });

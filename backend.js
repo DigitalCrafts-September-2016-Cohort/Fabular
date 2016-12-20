@@ -2,26 +2,28 @@ var express = require('express');
 var bodyParser = require('body-parser');
 var _ = require('lodash');
 var mongoose = require('mongoose');
-var Promise = require('bluebird');
+var bluebird = require('bluebird');
 
 var app = express();
 
 app.use(express.static('static'));
 app.use(bodyParser.json());
 
-mongoose.connect('mongodb://fabular_ack:fabular1234@ds139448.mlab.com:39448/fabular');
+// mongoose.connect('mongodb://fabular_ack:fabular1234@ds139448.mlab.com:39448/fabular');
+mongoose.connect('mongodb://localhost/fabular');
+mongoose.Promise = bluebird;
 
-var Category = mongoose.model('category',{
-  fruits : [String]
+const Cards = mongoose.model('card',{
+  name : String,
+  items : [String]
 });
 
 
-
 app.get('/things',function(request,response){
-  Category.find()
-  .then(function(data){
-    console.log("holasdf",data[0]);
-    response.json(data[0]);
+Cards.find()
+  .then(function(obj){
+    console.log(obj[0].items);
+    response.send(obj);
     })
     .catch(function(err){
       console.log(err.stash);
