@@ -20,15 +20,13 @@ const Cards = mongoose.model('card',{
 app.get('/things',function(request,response){
 Cards.find()
   .then(function(obj){
-    // let items = obj[0].items;
-    // _.shuffle(items);
-    // console.log(items);
     response.send(_.shuffle(obj[0].items).slice(0,3));
     })
     .catch(function(err){
       console.log(err.stash);
     });
 });
+
 
 app.listen('3000',function(){
   console.log("Server is running");
