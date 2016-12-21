@@ -22,8 +22,16 @@
   <span ng-show="currentIndex === 3"><img class="chainPic" ng-src="images/{{expectedResult[2]}}.png"/></span>
 </div>
 <div class="options">
-<div ng-repeat="option in optionsArray">
-  <span><img class="promptPic" src="images/{{option}}.png" alt="option" /></span>
-</div>
+  <div class="first" ng-show="currentIndex === 0" ng-class="{ 'animated': wobbleFirst, 'wobble': wobbleFirst }">
+    <button ng-click="firstClicked(expectedResult[0])"><img ng-src="images/{{expectedResult[0]}}.png"/></button>
+  </div>
+  <div ng-show="currentIndex === 0 || currentIndex === 1 ">
+    <button ng-click="secondClicked(expectedResult[1])"><img ng-src="images/{{expectedResult[1]}}.png"/></button>
+  </div>
+  <div class="board" ng-show="currentIndex === 0 || currentIndex === 1 || currentIndex === 2">
+    <div ng-repeat="thing in things">
+      <button id="{{thing}}" ng-disabled="checkDisabled(thing)"><img ng-click="thirdClicked(thing)" ng-src="images/{{thing}}.png"/></button>
+    </div>
+  </div>
 </div>
 <button ng-show="currentIndex === 3" ng-click="playAgain()">Play Again?</button>

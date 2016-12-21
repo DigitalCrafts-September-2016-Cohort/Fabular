@@ -17,7 +17,8 @@ const Cards = mongoose.model('card',{
 });
 
 
-app.get('/things',function(request,response){
+app.get('/things/:level',function(request,response){
+  // var theLevel = request.params.level;
 Cards.find()
   .then(function(obj){
     response.send(_.shuffle(obj[0].items).slice(0,3));

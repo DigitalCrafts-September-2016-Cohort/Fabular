@@ -17,22 +17,22 @@ app.config(function($stateProvider,$urlRouterProvider){
   $stateProvider
   .state({
     name : 'things',
-    url : '/things',
+    url : '/things/{level}',
     templateUrl : 'things.html',
     controller : 'fabularController'
-  })
-  .state({
-    name : 'settings',
-    url : '/settings',
-    templateUrl :'settings.html'
   });
+  // .state({
+  //   name : 'settings',
+  //   url : '/settings',
+  //   templateUrl :'settings.html'
+  // });
   $urlRouterProvider.otherwise('/things');
 });
 
 app.factory('fabularService',function($http){
   var service = {};
   service.getThings = function(){
-    var url = '/things';
+    var url = '/things/{level}';
     return $http({
       method : 'GET',
       url : url
@@ -43,47 +43,46 @@ return service;
 });
 
 
-app.controller('fabularController', function($scope, $rootScope, $state, fabularService) {
+app.controller('fabularController', function($scope, $stateParams, $rootScope, $state, fabularService) {
   $scope.countWins = 0;
-  $scope.set = function(){
-    chelevel = $scope.level;
-    $state.go('things');
-  };
+  chelevel = parseInt($stateParams.level);
+  console.log(typeof(chelevel));
+  console.log(chelevel);
   $scope.Again = function(){
   fabularService.getThings().success(function(data){
     $scope.currentIndex = 0;
-    $scope.numberResult = Math.floor(Math.random() * 5) + 1;
+    $scope.numberResult = Math.floor(Math.random() * 3) + 1;
     $scope.item = data[Math.floor((Math.random() * 3))];
-    $scope.questionArray = ['askfor',$scope.item];
-    $scope.optionsArray = [];
+    $scope.questionArray = ['ask',$scope.item];
     // setting the values of arrays:
-    if(chelevel === "1"){
+    if(chelevel === 1){
       $scope.optionsArray = $scope.optionsArray.push(data);
-      $scope.expectedResult = ['$scope.item'];
+      $scope.expectedResult = [$scope.item];
       console.log($scope.optionsArray);
       console.log($scope.expectedResult);
-    }else if (chelevel === "2"){
+    }else if (chelevel === 2){
       data.unshift('want');
-      $scope.optionsArray.push(data);
+      $scope.optionsArray = data;
+      $scope.expectedResult = ['want', $scope.item];
       console.log($scope.optionsArray);
       console.log($scope.expectedResult);
       $scope.expectedResult = ['want',$scope.item];
-    }else if (chelevel === "3"){
+    }else if (chelevel === 3){
       data.unshift('I','want');
-      $scope.optionsArray.push(data);
+      $scope.optionsArray = data;
       $scope.expectedResult = ['I','want',$scope.item] ;
       console.log($scope.optionsArray);
       console.log($scope.expectedResult);
-    }else if (chelevel === "4"){
-      data.unshift('I','want','2','3','4','5');
-      $scope.optionsArray.push(data);
+    }else if (chelevel === 4){
+      data.unshift('I','want', '1','2','3');
+      $scope.optionsArray = data;
       $scope.expectedResult = ['I','want',$scope.numberResult,$scope.item] ;
       console.log($scope.optionsArray);
       console.log($scope.expectedResult);
-    }else if (chelevel === "5"){
-      data.unshift('I','want','2','3','4','5');
+    }else if (chelevel === 5){
+      data.unshift('I','want','1','2','3');
       data.push('please');
-      $scope.optionsArray.push(data);
+      $scope.optionsArray =data;
       $scope.expectedResult = ['I','want',$scope.numberResult,$scope.item,'please'] ;
       console.log($scope.optionsArray);
       console.log($scope.expectedResult);
@@ -91,11 +90,8 @@ app.controller('fabularController', function($scope, $rootScope, $state, fabular
 
 
     // textToSpeak("Ask for "+$scope.item);
-    $scope.things = data;
+    // $scope.things = data;
     $scope.sentence = '';
-    $scope.expectedResult = ['I','want',$scope.item,'please'];
-    $scope.shakeImg = function(){
-    };
 
     $scope.firstClicked = function(item){
       console.log($scope.optionsArray);
