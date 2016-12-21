@@ -52,6 +52,7 @@ app.controller('fabularController', function($scope, $stateParams, $rootScope, $
   $scope.Again = function(){
   fabularService.getThings().success(function(data){
     $scope.currentIndex = 0;
+    $scope.resultLink = [];
     $scope.numberResult = Math.floor(Math.random() * 3) + 1;
     $scope.item = data[Math.floor((Math.random() * 3))];
     $scope.questionArray = ['ask',$scope.item];
@@ -83,7 +84,7 @@ app.controller('fabularController', function($scope, $stateParams, $rootScope, $
     }else if (chelevel === 5){
       data.unshift('I','want','1','2','3');
       data.push('please');
-      $scope.optionsArray =data;
+      $scope.optionsArray = data;
       $scope.expectedResult = ['I','want',$scope.numberResult,$scope.item,'please'] ;
       console.log($scope.optionsArray);
       console.log($scope.expectedResult);
@@ -93,15 +94,23 @@ app.controller('fabularController', function($scope, $stateParams, $rootScope, $
 			// console.log('Answer array ' + $scope.expectedResult);
 			if (option === $scope.expectedResult[$scope.currentIndex]) {
 				$scope.currentIndex += 1;
-				resultLink.push(option);
-				$scope.resultLink = resultLink;
+				// resultLink.push(option);
+				$scope.resultLink.push(option);
+        if(chelevel === 3 && $scope.currentIndex === 3){
+          $scope.optionsArray.splice($scope.optionsArray.indexOf(option), 3);
+        }
+        if(chelevel === 1 && $scope.currentIndex === 1){
+          $scope.optionsArray = [];
+        }
+        if(chelevel === 2 && $scope.currentIndex === 2){
+          $scope.optionsArray.splice($scope.optionsArray.indexOf(option), 3);
+        }
 				$scope.optionsArray.splice($scope.optionsArray.indexOf(option), 1);
 				// console.log($scope.resultLink);
 				textToSpeak(option);
 			} else {
 				//Wrong item selected; Error correction
-
-				console.log('Nope');
+        console.log('wrong item');
 			}
 		};
 
