@@ -39,6 +39,7 @@ return service;
 
 app.controller('fabularController', function($scope,fabularService) {
   $scope.countWins = 0;
+  $scope.wobbleFirst = false;
   $scope.Again = function(){
   fabularService.getThings().success(function(data){
     $scope.currentIndex = 0;
@@ -51,15 +52,20 @@ app.controller('fabularController', function($scope,fabularService) {
     };
 
     $scope.firstClicked = function(item){
+      console.log($scope.currentIndex);
       if($scope.currentIndex === 0){
         console.log('first click');
         if(item === $scope.expectedResult[0]){
-          // textToSpeak(item);
+          textToSpeak(item);
+          $scope.wobbleFirst = false;
           $scope.sentence += item;
           $scope.currentIndex += 1;
           console.log($scope.currentIndex);
-        } else{
-          // textToSpeak("Close, but not quite right. Let's try again");
+        } else {
+          //Error correction by wobbling first chaining button
+          $scope.wobbleFirst = true;
+          console.log('Entered else');
+          textToSpeak("Close, but not quite right. Let's try again");
         }
       }
     };
@@ -67,12 +73,12 @@ app.controller('fabularController', function($scope,fabularService) {
       if($scope.currentIndex === 1){
         console.log('second click');
         if(item === $scope.expectedResult[1]){
-          // textToSpeak(item);
+          textToSpeak(item);
           $scope.sentence += " "+item;
           $scope.currentIndex += 1;
           console.log($scope.currentIndex);
         } else {
-          // textToSpeak("Close, but not quite right. Let's try again");
+          textToSpeak("Close, but not quite right. Let's try again");
         }
       }
 
@@ -90,7 +96,7 @@ app.controller('fabularController', function($scope,fabularService) {
         $scope.currentIndex += 1;
         $scope.sentence += " "+$scope.item;
         console.log($scope.sentence);
-        // textToSpeak($scope.item);
+        textToSpeak($scope.item);
         // setTimeout(function(){ textToSpeak($scope.sentence); }, 1000);
         setTimeout(function(){
           // textToSpeak("Good job on asking for"+$scope.item);
@@ -98,7 +104,7 @@ app.controller('fabularController', function($scope,fabularService) {
           console.log("Wins: "+$scope.countWins);}, 1200);
         }
       else {
-        // textToSpeak(someThing+ "Close, but not quite right. Let's try again");
+        textToSpeak(someThing+ "Close, but not quite right. Let's try again");
       }
     }
   };
