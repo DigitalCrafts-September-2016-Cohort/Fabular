@@ -46,8 +46,9 @@ return service;
 
 app.controller('fabularController', function($scope, $stateParams, $rootScope, $state, fabularService) {
   $scope.countWins = 0;
+	$scope.arrLength = 0;
   chelevel = parseInt($stateParams.level);
-  console.log(typeof(chelevel));
+  console.log('fabularController', typeof(chelevel));
   console.log(chelevel);
   $scope.Again = function(){
   fabularService.getThings().success(function(data){
@@ -59,32 +60,40 @@ app.controller('fabularController', function($scope, $stateParams, $rootScope, $
     if(chelevel === 1){
       $scope.optionsArray = data;
       $scope.expectedResult = [$scope.item];
+			$scope.arrLength = $scope.expectedResult.length;
       console.log($scope.optionsArray);
       console.log($scope.expectedResult);
     }else if (chelevel === 2){
       data.unshift('want');
       $scope.optionsArray = data;
       $scope.expectedResult = ['want', $scope.item];
+			$scope.arrLength = $scope.expectedResult.length;
+			console.log("Length " + $scope.arrLength);
       console.log($scope.optionsArray);
       console.log($scope.expectedResult);
       $scope.expectedResult = ['want',$scope.item];
+			console.log("length: " + $scope.expectedResult.length);
     }else if (chelevel === 3){
       data.unshift('I','want');
       $scope.optionsArray = data;
       $scope.expectedResult = ['I','want',$scope.item] ;
+			$scope.arrLength = $scope.expectedResult.length;
       console.log($scope.optionsArray);
       console.log($scope.expectedResult);
     }else if (chelevel === 4){
       data.unshift('I','want', '1','2','3');
       $scope.optionsArray = data;
       $scope.expectedResult = ['I','want',$scope.numberResult,$scope.item] ;
+			$scope.arrLength = $scope.expectedResult.length;
       console.log($scope.optionsArray);
       console.log($scope.expectedResult);
+			console.log($scope.expectedResult.length);
     }else if (chelevel === 5){
       data.unshift('I','want','1','2','3');
       data.push('please');
       $scope.optionsArray =data;
       $scope.expectedResult = ['I','want',$scope.numberResult,$scope.item,'please'] ;
+			$scope.arrLength = $scope.expectedResult.length;
       console.log($scope.optionsArray);
       console.log($scope.expectedResult);
     }
@@ -95,6 +104,7 @@ app.controller('fabularController', function($scope, $stateParams, $rootScope, $
 				$scope.currentIndex += 1;
 				resultLink.push(option);
 				$scope.resultLink = resultLink;
+				console.log("result: " + $scope.resultLink.length);
 				$scope.optionsArray.splice($scope.optionsArray.indexOf(option), 1);
 				// console.log($scope.resultLink);
 				textToSpeak(option);
