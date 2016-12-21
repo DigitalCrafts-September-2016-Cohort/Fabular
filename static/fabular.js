@@ -20,6 +20,12 @@ app.config(function($stateProvider,$urlRouterProvider){
     url : '/things',
     templateUrl : 'things.html',
     controller : 'fabularController'
+  })
+  .state({
+    name : 'settings',
+    url : '/settings',
+    templateUrl :'settings.html',
+    controller : 'fabularController'
   });
   $urlRouterProvider.otherwise('/things');
 });
@@ -37,7 +43,8 @@ app.factory('fabularService',function($http){
 return service;
 });
 
-app.controller('fabularController', function($scope,fabularService) {
+
+app.controller('fabularController', function($scope, $state, fabularService) {
   $scope.countWins = 0;
   $scope.wobbleFirst = false;
   $scope.Again = function(){
@@ -50,7 +57,10 @@ app.controller('fabularController', function($scope,fabularService) {
     $scope.expectedResult = ['I','want',$scope.item,'please'];
     $scope.shakeImg = function(){
     };
-
+    $scope.set = function(){
+      console.log($scope.level);
+      $state.go('things');
+    };
     $scope.firstClicked = function(item){
       console.log($scope.currentIndex);
       if($scope.currentIndex === 0){
