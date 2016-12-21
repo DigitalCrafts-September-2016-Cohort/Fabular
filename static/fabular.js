@@ -1,5 +1,5 @@
 var app = angular.module('fabular', ['ui.router']);
-
+var chelevel = '';
 function textToSpeak(msg, idx) {
 	if (typeof msg !== 'string') {
 		throw new TypeError('Expected to say a string.');
@@ -24,8 +24,7 @@ app.config(function($stateProvider,$urlRouterProvider){
   .state({
     name : 'settings',
     url : '/settings',
-    templateUrl :'settings.html',
-    controller : 'fabularController'
+    templateUrl :'settings.html'
   });
   $urlRouterProvider.otherwise('/things');
 });
@@ -44,36 +43,73 @@ return service;
 });
 
 
-app.controller('fabularController', function($scope, $state, fabularService) {
+app.controller('fabularController', function($scope, $rootScope, $state, fabularService) {
   $scope.countWins = 0;
-  $scope.wobbleFirst = false;
+  $scope.set = function(){
+    chelevel = $scope.level;
+    $state.go('things');
+  };
   $scope.Again = function(){
   fabularService.getThings().success(function(data){
     $scope.currentIndex = 0;
+    $scope.numberResult = Math.floor(Math.random() * 5) + 1;
     $scope.item = data[Math.floor((Math.random() * 3))];
+    $scope.questionArray = ['askfor',$scope.item];
+    $scope.optionsArray = [];
+    // setting the values of arrays:
+    if(chelevel === "1"){
+      $scope.optionsArray = $scope.optionsArray.push(data);
+      $scope.expectedResult = ['$scope.item'];
+      console.log($scope.optionsArray);
+      console.log($scope.expectedResult);
+    }else if (chelevel === "2"){
+      data.unshift('want');
+      $scope.optionsArray.push(data);
+      console.log($scope.optionsArray);
+      console.log($scope.expectedResult);
+      $scope.expectedResult = ['want',$scope.item];
+    }else if (chelevel === "3"){
+      data.unshift('I','want');
+      $scope.optionsArray.push(data);
+      $scope.expectedResult = ['I','want',$scope.item] ;
+      console.log($scope.optionsArray);
+      console.log($scope.expectedResult);
+    }else if (chelevel === "4"){
+      data.unshift('I','want','2','3','4','5');
+      $scope.optionsArray.push(data);
+      $scope.expectedResult = ['I','want',$scope.numberResult,$scope.item] ;
+      console.log($scope.optionsArray);
+      console.log($scope.expectedResult);
+    }else if (chelevel === "5"){
+      data.unshift('I','want','2','3','4','5');
+      data.push('please');
+      $scope.optionsArray.push(data);
+      $scope.expectedResult = ['I','want',$scope.numberResult,$scope.item,'please'] ;
+      console.log($scope.optionsArray);
+      console.log($scope.expectedResult);
+    }
+
+
     // textToSpeak("Ask for "+$scope.item);
     $scope.things = data;
     $scope.sentence = '';
     $scope.expectedResult = ['I','want',$scope.item,'please'];
     $scope.shakeImg = function(){
     };
-    $scope.set = function(){
-      console.log($scope.level);
-      $state.go('things');
-    };
+
     $scope.firstClicked = function(item){
+      console.log($scope.optionsArray);
+      console.log($scope.expectedResult);
+
       console.log($scope.currentIndex);
       if($scope.currentIndex === 0){
         console.log('first click');
         if(item === $scope.expectedResult[0]){
           textToSpeak(item);
-          $scope.wobbleFirst = false;
           $scope.sentence += item;
           $scope.currentIndex += 1;
           console.log($scope.currentIndex);
         } else {
-          //Error correction by wobbling first chaining button
-          $scope.wobbleFirst = true;
           console.log('Entered else');
           textToSpeak("Close, but not quite right. Let's try again");
         }
