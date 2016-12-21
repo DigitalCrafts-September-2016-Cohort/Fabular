@@ -1,6 +1,5 @@
 var app = angular.module('fabular', ['ui.router']);
 var chelevel = '';
-var resultLink = [];
 function textToSpeak(msg, idx) {
 	if (typeof msg !== 'string') {
 		throw new TypeError('Expected to say a string.');
@@ -57,7 +56,7 @@ app.controller('fabularController', function($scope, $stateParams, $rootScope, $
     $scope.questionArray = ['ask',$scope.item];
     // setting the values of arrays:
     if(chelevel === 1){
-      $scope.optionsArray = data;
+      $scope.optionsArray = $scope.optionsArray.push(data);
       $scope.expectedResult = [$scope.item];
       console.log($scope.optionsArray);
       console.log($scope.expectedResult);
@@ -88,23 +87,69 @@ app.controller('fabularController', function($scope, $stateParams, $rootScope, $
       console.log($scope.optionsArray);
       console.log($scope.expectedResult);
     }
-		$scope.clicked = function(option) {
-			console.log('Value: ' + option);
-			// console.log('Answer array ' + $scope.expectedResult);
-			if (option === $scope.expectedResult[$scope.currentIndex]) {
-				$scope.currentIndex += 1;
-				resultLink.push(option);
-				$scope.resultLink = resultLink;
-				$scope.optionsArray.splice($scope.optionsArray.indexOf(option), 1);
-				// console.log($scope.resultLink);
-				textToSpeak(option);
-			} else {
-				//Wrong item selected; Error correction
 
-				console.log('Nope');
-			}
-		};
 
+    // textToSpeak("Ask for "+$scope.item);
+    // $scope.things = data;
+    $scope.sentence = '';
+
+    $scope.firstClicked = function(item){
+      console.log($scope.optionsArray);
+      console.log($scope.expectedResult);
+
+      console.log($scope.currentIndex);
+      if($scope.currentIndex === 0){
+        console.log('first click');
+        if(item === $scope.expectedResult[0]){
+          textToSpeak(item);
+          $scope.sentence += item;
+          $scope.currentIndex += 1;
+          console.log($scope.currentIndex);
+        } else {
+          console.log('Entered else');
+          textToSpeak("Close, but not quite right. Let's try again");
+        }
+      }
+    };
+    $scope.secondClicked = function(item){
+      if($scope.currentIndex === 1){
+        console.log('second click');
+        if(item === $scope.expectedResult[1]){
+          textToSpeak(item);
+          $scope.sentence += " "+item;
+          $scope.currentIndex += 1;
+          console.log($scope.currentIndex);
+        } else {
+          textToSpeak("Close, but not quite right. Let's try again");
+        }
+      }
+
+    };
+    $scope.thirdClicked = function(someThing) {
+      if($scope.currentIndex === 2){
+        $scope.checkDisabled = function(item) {
+          if (item !== $scope.item) {
+            return true;
+          }
+        };
+
+
+      if (someThing === $scope.item) {
+        $scope.currentIndex += 1;
+        $scope.sentence += " "+$scope.item;
+        console.log($scope.sentence);
+        textToSpeak($scope.item);
+        // setTimeout(function(){ textToSpeak($scope.sentence); }, 1000);
+        setTimeout(function(){
+          // textToSpeak("Good job on asking for"+$scope.item);
+          $scope.countWins +=1;
+          console.log("Wins: "+$scope.countWins);}, 1200);
+        }
+      else {
+        textToSpeak(someThing+ "Close, but not quite right. Let's try again");
+      }
+    }
+  };
   });
 };
 $scope.Again();
