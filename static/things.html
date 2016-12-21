@@ -1,7 +1,15 @@
 <div class="reward">
-  <img class="shake" ng-src="images/egg{{currentIndex}}.png"/>
-  <!-- <img src="images/banana.png"/> -->
-</div>
+  <div >
+    <img ng-show="currentIndex === 0" class="animated wobble" ng-src="images/egg{{currentIndex}}.png"/>
+    <img ng-show="currentIndex === 1" class="animated wobble" ng-src="images/egg{{currentIndex}}.png"/>
+    <img ng-show="currentIndex === 2" class="animated wobble" ng-src="images/egg{{currentIndex}}.png"/>
+    <img ng-show="currentIndex === 3" class="animated wobble" ng-src="images/egg{{currentIndex}}.png"/>
+  </div>
+    <img ng-show="countWins === 1 || countWins === 2 || countWins === 3" ng-src="images/egg3.png"/>
+    <img ng-show="countWins === 3 || countWins === 2" ng-src="images/egg3.png"/>
+    <img ng-show="countWins === 3" ng-src="images/egg3.png"/>
+  </div>
+
 <div class="prompt">
     <span><img class="promptPic" src="images/ask.png" alt="ask for" /></span>
     <img class="promptPic" ng-src="images/{{item}}.png"/>

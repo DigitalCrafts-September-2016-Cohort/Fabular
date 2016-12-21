@@ -13,7 +13,6 @@ function textToSpeak(msg, idx) {
 	y.speak(s);
 }
 
-
 app.config(function($stateProvider,$urlRouterProvider){
   $stateProvider
   .state({
@@ -42,26 +41,25 @@ app.controller('fabularController', function($scope,fabularService) {
   $scope.countWins = 0;
   $scope.Again = function(){
   fabularService.getThings().success(function(data){
-    console.log(data);
     $scope.currentIndex = 0;
     $scope.item = data[Math.floor((Math.random() * 3))];
-    textToSpeak("Ask for "+$scope.item);
+    // textToSpeak("Ask for "+$scope.item);
     $scope.things = data;
     $scope.sentence = '';
     $scope.expectedResult = ['I','want',$scope.item,'please'];
-    console.log("currentIndex at first"+$scope.currentIndex);
-    console.log($scope.expectedResult);
-    console.log($scope.expectedResult[0]);
+    $scope.shakeImg = function(){
+    };
+
     $scope.firstClicked = function(item){
       if($scope.currentIndex === 0){
         console.log('first click');
         if(item === $scope.expectedResult[0]){
-          textToSpeak(item);
+          // textToSpeak(item);
           $scope.sentence += item;
           $scope.currentIndex += 1;
           console.log($scope.currentIndex);
-        }else{
-          textToSpeak("Close, but not quite right. Let's try again");
+        } else{
+          // textToSpeak("Close, but not quite right. Let's try again");
         }
       }
     };
@@ -69,12 +67,12 @@ app.controller('fabularController', function($scope,fabularService) {
       if($scope.currentIndex === 1){
         console.log('second click');
         if(item === $scope.expectedResult[1]){
-          textToSpeak(item);
+          // textToSpeak(item);
           $scope.sentence += " "+item;
           $scope.currentIndex += 1;
           console.log($scope.currentIndex);
         } else {
-          textToSpeak("Close, but not quite right. Let's try again");
+          // textToSpeak("Close, but not quite right. Let's try again");
         }
       }
 
@@ -92,15 +90,15 @@ app.controller('fabularController', function($scope,fabularService) {
         $scope.currentIndex += 1;
         $scope.sentence += " "+$scope.item;
         console.log($scope.sentence);
-        textToSpeak($scope.item);
-        setTimeout(function(){ textToSpeak($scope.sentence); }, 1000);
+        // textToSpeak($scope.item);
+        // setTimeout(function(){ textToSpeak($scope.sentence); }, 1000);
         setTimeout(function(){
-          textToSpeak("Good job on asking for"+$scope.item);
+          // textToSpeak("Good job on asking for"+$scope.item);
           $scope.countWins +=1;
           console.log("Wins: "+$scope.countWins);}, 1200);
         }
       else {
-        textToSpeak(someThing+ "Close, but not quite right. Let's try again");
+        // textToSpeak(someThing+ "Close, but not quite right. Let's try again");
       }
     }
   };
@@ -108,6 +106,6 @@ app.controller('fabularController', function($scope,fabularService) {
 };
 $scope.Again();
 $scope.playAgain = function(){
-  $scope.Again();
+$scope.Again();
 };
 });
