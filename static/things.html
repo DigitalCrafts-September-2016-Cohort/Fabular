@@ -1,13 +1,13 @@
 <div class="reward">
-  <div >
+  <div>
     <img ng-show="currentIndex === 0" class="animated wobble" ng-src="images/egg{{currentIndex}}.png"/>
     <img ng-show="currentIndex === 1" class="animated wobble" ng-src="images/egg{{currentIndex}}.png"/>
     <img ng-show="currentIndex === 2" class="animated wobble" ng-src="images/egg{{currentIndex}}.png"/>
     <img ng-show="currentIndex === 3" class="animated wobble" ng-src="images/egg{{currentIndex}}.png"/>
   </div>
-    <img ng-show="countWins === 1 || countWins === 2 || countWins === 3" ng-src="images/egg3.png"/>
-    <img ng-show="countWins === 3 || countWins === 2" ng-src="images/egg3.png"/>
-    <img ng-show="countWins === 3" ng-src="images/egg3.png"/>
+    <img ng-show="countWins === 1 || countWins === 2 || countWins === 3" ng-src="images/pinkChick.png"/>
+    <img ng-show="countWins === 3 || countWins === 2" ng-src="images/greenChick.png"/>
+    <img ng-show="countWins === 3" ng-src="images/purpleChick.png"/>
   </div>
 
 <div class="prompt">
@@ -15,21 +15,22 @@
     <img class="promptPic" ng-src="images/{{item}}.png"/>
 </div>
 <div class="chainUrl">
-  <span ng-if="currentIndex === 1 || currentIndex === 2 || currentIndex === 3"><img class="chainPic" ng-src="images/{{expectedResult[0]}}.png"/></span>
-  <span ng-if="currentIndex === 2 || currentIndex === 3"><img class="chainPic" ng-src="images/{{expectedResult[1]}}.png"/></span>
-  <span ng-if="currentIndex === 3"><img class="chainPic" ng-src="images/{{expectedResult[2]}}.png"/></span>
+  <span ng-show="currentIndex === 1 || currentIndex === 2 || currentIndex === 3"><img class="chainPic" ng-src="images/{{expectedResult[0]}}.png"/></span>
+  <span ng-show="currentIndex === 2 || currentIndex === 3"><img class="chainPic" ng-src="images/{{expectedResult[1]}}.png"/></span>
+  <span ng-show="currentIndex === 3"><img class="chainPic" ng-src="images/{{expectedResult[2]}}.png"/></span>
 </div>
 <div class="options">
-  <div class="first" ng-if="currentIndex === 0">
+  {{wobbleFirst}}
+  <div class="first" ng-show="currentIndex === 0" ng-class="{ 'animated': wobbleFirst, 'wobble': wobbleFirst }">
     <button ng-click="firstClicked(expectedResult[0])"><img ng-src="images/{{expectedResult[0]}}.png"/></button>
   </div>
-  <div ng-if="currentIndex === 0 || currentIndex === 1 ">
+  <div ng-show="currentIndex === 0 || currentIndex === 1 ">
     <button ng-click="secondClicked(expectedResult[1])"><img ng-src="images/{{expectedResult[1]}}.png"/></button>
   </div>
-  <div class="board" ng-if="currentIndex === 0 || currentIndex === 1 || currentIndex === 2">
+  <div class="board" ng-show="currentIndex === 0 || currentIndex === 1 || currentIndex === 2">
     <div ng-repeat="thing in things">
       <button id="{{thing}}" ng-disabled="checkDisabled(thing)"><img ng-click="thirdClicked(thing)" ng-src="images/{{thing}}.png"/></button>
     </div>
   </div>
 </div>
-<button ng-if="currentIndex === 3" ng-click="playAgain()">Play Again?</button>
+<button ng-show="currentIndex === 3" ng-click="playAgain()">Play Again?</button>
