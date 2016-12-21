@@ -1,6 +1,8 @@
 var app = angular.module('fabular', ['ui.router']);
 var chelevel = '';
 var resultLink = [];
+var arrLength = 0;
+
 function textToSpeak(msg, idx) {
 	if (typeof msg !== 'string') {
 		throw new TypeError('Expected to say a string.');
@@ -46,7 +48,6 @@ return service;
 
 app.controller('fabularController', function($scope, $stateParams, $rootScope, $state, fabularService) {
   $scope.countWins = 0;
-	$scope.arrLength = 0;
   chelevel = parseInt($stateParams.level);
   console.log('fabularController', typeof(chelevel));
   console.log(chelevel);
