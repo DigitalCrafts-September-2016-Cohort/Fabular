@@ -21,11 +21,6 @@ app.config(function($stateProvider,$urlRouterProvider){
     templateUrl : 'things.html',
     controller : 'fabularController'
   });
-  // .state({
-  //   name : 'settings',
-  //   url : '/settings',
-  //   templateUrl :'settings.html'
-  // });
   $urlRouterProvider.otherwise('/things');
 });
 

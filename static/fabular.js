@@ -1,7 +1,7 @@
 var app = angular.module('fabular', ['ui.router']);
 var chelevel = '';
 var resultLink = [];
-var arrLength = 0;
+// var arrLength = 0;
 
 function textToSpeak(msg, idx) {
 	if (typeof msg !== 'string') {
@@ -62,69 +62,70 @@ app.controller('fabularController', function($scope, $stateParams, $rootScope, $
     if(chelevel === 1){
       $scope.optionsArray = data;
       $scope.expectedResult = [$scope.item];
-			$scope.arrLength = $scope.expectedResult.length;
+			// $scope.arrLength = $scope.expectedResult.length;
       console.log($scope.optionsArray);
       console.log($scope.expectedResult);
     }else if (chelevel === 2){
       data.unshift('want');
       $scope.optionsArray = data;
       $scope.expectedResult = ['want', $scope.item];
-			$scope.arrLength = $scope.expectedResult.length;
-			console.log("Length " + $scope.arrLength);
-      console.log($scope.optionsArray);
-      console.log($scope.expectedResult);
+			// $scope.arrLength = $scope.expectedResult.length;
       $scope.expectedResult = ['want',$scope.item];
-			console.log("length: " + $scope.expectedResult.length);
     }else if (chelevel === 3){
       data.unshift('I','want');
       $scope.optionsArray = data;
+      console.log($scope.optionsArray);
       $scope.expectedResult = ['I','want',$scope.item] ;
-			$scope.arrLength = $scope.expectedResult.length;
-      console.log($scope.optionsArray);
-      console.log($scope.expectedResult);
+			// $scope.arrLength = $scope.expectedResult.length;
     }else if (chelevel === 4){
-      data.unshift('I','want', '1','2','3');
+      data.unshift('i','want','1','2','3');
+      $scope.questionArray = ['ask',$scope.numberResult.toString(),$scope.item];
       $scope.optionsArray = data;
-      $scope.expectedResult = ['I','want',$scope.numberResult,$scope.item] ;
-			$scope.arrLength = $scope.expectedResult.length;
       console.log($scope.optionsArray);
-      console.log($scope.expectedResult);
-			console.log($scope.expectedResult.length);
+      $scope.expectedResult = ['i','want',$scope.numberResult.toString(),$scope.item] ;
+			// $scope.arrLength = $scope.expectedResult.length;
     }else if (chelevel === 5){
-      data.unshift('I','want','1','2','3');
+      data.unshift('i','want','1','2','3');
       data.push('please');
       $scope.optionsArray = data;
-      $scope.expectedResult = ['I','want',$scope.numberResult,$scope.item,'please'] ;
-			$scope.arrLength = $scope.expectedResult.length;
-      console.log($scope.optionsArray);
-      console.log($scope.expectedResult);
+      $scope.questionArray = ['ask',$scope.numberResult.toString(),$scope.item];
+      $scope.expectedResult = ['i','want',$scope.numberResult.toString(),$scope.item,'please'] ;
+			// $scope.arrLength = $scope.expectedResult.length;
     }
 		$scope.clicked = function(option) {
-			console.log('Value: ' + option);
 			// console.log('Answer array ' + $scope.expectedResult);
 			if (option === $scope.expectedResult[$scope.currentIndex]) {
 				$scope.currentIndex += 1;
-
-				// resultLink.push(option);
 				$scope.resultLink.push(option);
+				debugger;
+				console.log("CurrentIndex"+$scope.currentIndex);
+				if(chelevel === 1 && $scope.currentIndex === 1){
+          $scope.optionsArray.splice(0,3);
+        }
+				if(chelevel === 2 && $scope.currentIndex === 2){
+          $scope.optionsArray.splice($scope.optionsArray.indexOf(option), 3);
+        }
         if(chelevel === 3 && $scope.currentIndex === 3){
-          $scope.optionsArray.splice($scope.optionsArray.indexOf(option), 3);
+          $scope.optionsArray.splice(0, 2);
         }
-        if(chelevel === 1 && $scope.currentIndex === 1){
-          $scope.optionsArray = [];
+        if(chelevel === 4 && $scope.currentIndex === 4){
+					$scope.optionsArray = [];
         }
-        if(chelevel === 2 && $scope.currentIndex === 2){
-          $scope.optionsArray.splice($scope.optionsArray.indexOf(option), 3);
+				if((chelevel === 4 || chelevel === 5) && ($scope.currentIndex === 3 || $scope.currentIndex === 4)){
+					$scope.optionsArray.splice(0, 3);
+				}
+        if(chelevel === 5 && $scope.currentIndex === 5){
+          $scope.optionsArray.pop();
         }
 				$scope.optionsArray.splice($scope.optionsArray.indexOf(option), 1);
-				// console.log($scope.resultLink);
 				textToSpeak(option);
-			} else {
-				//Wrong item selected; Error correction
+			}
+      else {
+        textToSpeak(option);
+				textToSpeak("Close, but not quite right. Let's try again");
         console.log('wrong item');
 			}
 		};
-
   });
 };
 $scope.Again();
