@@ -46,7 +46,13 @@ return service;
 
 
 app.controller('fabularController', function($scope, $stateParams, $rootScope, $state, fabularService) {
-  $scope.countWins = 0;
+	var i_obj = {"name" : "i", "wobble" : "false"};
+	var ask_obj = {"name" : "ask", "wobble" : "false"};
+	var want_obj = {"name" : "want", "wobble" : "false"};
+	var obj_1 = {"name" : "1", "wobble" : "false"};
+	var obj_2 = {"name" : "2", "wobble" : "false"};
+	var obj_3 = {"name" : "3", "wobble" : "false"};
+	$scope.countWins = 0;
   chelevel = parseInt($stateParams.level);
   $scope.Again = function(){
   	fabularService.getThings().success(function(data){
@@ -54,46 +60,46 @@ app.controller('fabularController', function($scope, $stateParams, $rootScope, $
     $scope.resultLink = [];
     $scope.numberResult = Math.floor(Math.random() * 3) + 1;
     $scope.item = data[Math.floor((Math.random() * 3))];
-    $scope.questionArray = ['ask',$scope.item];
+    $scope.questionArray = [ask_obj,$scope.item];
     // setting the values of arrays:
     if(chelevel === 1){
       $scope.optionsArray = data;
       $scope.expectedResult = [$scope.item];
 
     }else if (chelevel === 2){
-      data.unshift('want');
+      data.unshift(want_obj);
       $scope.optionsArray = data;
-      $scope.expectedResult = ['want', $scope.item];
-
-      $scope.expectedResult = ['want',$scope.item];
+      $scope.expectedResult = [want_obj, $scope.item];
+      $scope.expectedResult = [want_obj,$scope.item];
     }else if (chelevel === 3){
-      data.unshift('I','want');
+      data.unshift(i_obj,want_obj);
       $scope.optionsArray = data;
       console.log($scope.optionsArray);
-      $scope.expectedResult = ['I','want',$scope.item] ;
+      $scope.expectedResult = [i_obj,want_obj,$scope.item] ;
     }else if (chelevel === 4){
-      data.unshift('i','want','1','2','3');
-      $scope.questionArray = ['ask',$scope.numberResult.toString(),$scope.item];
+      data.unshift(i_obj,want_obj,obj_1,obj_2,obj_3);
+      $scope.questionArray = [ask_obj,{"name" : $scope.numberResult.toString(), "wobble" : false},$scope.item];
       $scope.optionsArray = data;
-      console.log($scope.optionsArray);
-      $scope.expectedResult = ['i','want',$scope.numberResult.toString(),$scope.item] ;
-
+      $scope.expectedResult = [i_obj,want_obj,{"name" : $scope.numberResult.toString(), "wobble" : false},$scope.item] ;
     }else if (chelevel === 5){
-      data.unshift('i','want','1','2','3');
-      data.push('please');
+			please_obj = {"name" : "please", "wobble" : "false"};
+      data.unshift(i_obj,want_obj,obj_1,obj_2,obj_3);
+      data.push(please_obj);
       $scope.optionsArray = data;
-      $scope.questionArray = ['ask',$scope.numberResult.toString(),$scope.item];
-      $scope.expectedResult = ['i','want',$scope.numberResult.toString(),$scope.item,'please'] ;
+      $scope.questionArray = [ask_obj,{"name" : $scope.numberResult.toString(), "wobble" : false},$scope.item];
+      $scope.expectedResult = [i_obj,want_obj,{"name" : $scope.numberResult.toString(), "wobble" : false},$scope.item,please_obj] ;
 
     }
 		$scope.clicked = function(option) {
-
-			if (option === $scope.expectedResult[$scope.currentIndex]) {
+			// console.log($scope.expectedResult[$scope.currentIndex].name);
+			// console.log(option.name);
+			if (option.name === $scope.expectedResult[$scope.currentIndex].name) {
 				$scope.currentIndex += 1;
 				$scope.resultLink.push(option);
-				console.log("CurrentIn "+$scope.currentIndex);
+				console.log($scope.optionsArray);
 				if(chelevel === 1 && $scope.currentIndex === 1){
           $scope.optionsArray = [];
+					console.log($scope.optionsArray);
         }
 				if(chelevel === 2 && $scope.currentIndex === 2){
           $scope.optionsArray = [];
@@ -115,7 +121,7 @@ app.controller('fabularController', function($scope, $stateParams, $rootScope, $
 			}
 		}
       else {
-        
+
 			}
 		};
   });
