@@ -20,7 +20,8 @@
 </div>
 <div class="options">
 <div ng-repeat="option in optionsArray" ng-click="clicked(option)">
-  <span id="{{option}}"><img class="promptPic" ng-src="images/{{option}}.png" alt="option" /></span>
+  <!-- <span id="{{option}}"><img class="promptPic" ng-src="images/{{option}}.png" alt="option" /></span> -->
+    <span ng-class="{{option}} {{str}}"><img class="promptPic" ng-src="images/{{option}}.png" alt="option" /></span>
 </div>
 </div>
 
