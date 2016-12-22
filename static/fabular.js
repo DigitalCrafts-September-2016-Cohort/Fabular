@@ -49,10 +49,8 @@ return service;
 app.controller('fabularController', function($scope, $stateParams, $rootScope, $state, fabularService) {
   $scope.countWins = 0;
   chelevel = parseInt($stateParams.level);
-  console.log('fabularController', typeof(chelevel));
-  console.log(chelevel);
   $scope.Again = function(){
-  fabularService.getThings().success(function(data){
+  	fabularService.getThings().success(function(data){
     $scope.currentIndex = 0;
     $scope.resultLink = [];
     $scope.numberResult = Math.floor(Math.random() * 3) + 1;
@@ -63,8 +61,6 @@ app.controller('fabularController', function($scope, $stateParams, $rootScope, $
       $scope.optionsArray = data;
       $scope.expectedResult = [$scope.item];
 			// $scope.arrLength = $scope.expectedResult.length;
-      console.log($scope.optionsArray);
-      console.log($scope.expectedResult);
     }else if (chelevel === 2){
       data.unshift('want');
       $scope.optionsArray = data;
@@ -97,32 +93,34 @@ app.controller('fabularController', function($scope, $stateParams, $rootScope, $
 			if (option === $scope.expectedResult[$scope.currentIndex]) {
 				$scope.currentIndex += 1;
 				$scope.resultLink.push(option);
-				debugger;
-				console.log("CurrentIndex"+$scope.currentIndex);
+				console.log("CurrentIn "+$scope.currentIndex);
 				if(chelevel === 1 && $scope.currentIndex === 1){
-          $scope.optionsArray.splice(0,3);
+          $scope.optionsArray = [];
         }
 				if(chelevel === 2 && $scope.currentIndex === 2){
-          $scope.optionsArray.splice($scope.optionsArray.indexOf(option), 3);
+          $scope.optionsArray = [];
         }
         if(chelevel === 3 && $scope.currentIndex === 3){
-          $scope.optionsArray.splice(0, 2);
+          $scope.optionsArray = [];
         }
         if(chelevel === 4 && $scope.currentIndex === 4){
 					$scope.optionsArray = [];
         }
 				if((chelevel === 4 || chelevel === 5) && ($scope.currentIndex === 3 || $scope.currentIndex === 4)){
-					$scope.optionsArray.splice(0, 3);
+					$scope.optionsArray.splice(0,3);
 				}
         if(chelevel === 5 && $scope.currentIndex === 5){
           $scope.optionsArray.pop();
         }
+				if ($scope.currentIndex === 1 || $scope.currentIndex === 2){
 				$scope.optionsArray.splice($scope.optionsArray.indexOf(option), 1);
-				textToSpeak(option);
+			}
+				// textToSpeak(option);
 			}
       else {
-        textToSpeak(option);
-				textToSpeak("Close, but not quite right. Let's try again");
+        // textToSpeak(option);
+				// textToSpeak("Close, but not quite right. Let's try again");
+				
         console.log('wrong item');
 			}
 		};
