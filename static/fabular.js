@@ -45,7 +45,7 @@ return service;
 });
 
 
-app.controller('fabularController', function($scope, $stateParams, $rootScope, $state, fabularService) {
+app.controller('fabularController', function($scope, $timeout,$stateParams, $rootScope, $state, fabularService) {
 	var i_obj = {"name" : "i", "wobble" : "false"};
 	var ask_obj = {"name" : "ask", "wobble" : "false"};
 	var want_obj = {"name" : "want", "wobble" : "false"};
@@ -58,7 +58,8 @@ app.controller('fabularController', function($scope, $stateParams, $rootScope, $
   	fabularService.getThings().success(function(data){
     $scope.currentIndex = 0;
     $scope.resultLink = [];
-    $scope.numberResult = Math.floor(Math.random() * 3) + 1;
+    var r = (Math.floor(Math.random() * 3) + 1).toString();
+		var r_num = {"name" : r, "wobble" : "false"};
     $scope.item = data[Math.floor((Math.random() * 3))];
     $scope.questionArray = [ask_obj,$scope.item];
     // setting the values of arrays:
@@ -78,21 +79,22 @@ app.controller('fabularController', function($scope, $stateParams, $rootScope, $
       $scope.expectedResult = [i_obj,want_obj,$scope.item] ;
     }else if (chelevel === 4){
       data.unshift(i_obj,want_obj,obj_1,obj_2,obj_3);
-      $scope.questionArray = [ask_obj,{"name" : $scope.numberResult.toString(), "wobble" : false},$scope.item];
+      $scope.questionArray = [ask_obj,r_num,$scope.item];
       $scope.optionsArray = data;
-      $scope.expectedResult = [i_obj,want_obj,{"name" : $scope.numberResult.toString(), "wobble" : false},$scope.item] ;
+      $scope.expectedResult = [i_obj,want_obj,r_num,$scope.item] ;
     }else if (chelevel === 5){
 			please_obj = {"name" : "please", "wobble" : "false"};
       data.unshift(i_obj,want_obj,obj_1,obj_2,obj_3);
       data.push(please_obj);
       $scope.optionsArray = data;
-      $scope.questionArray = [ask_obj,{"name" : $scope.numberResult.toString(), "wobble" : false},$scope.item];
-      $scope.expectedResult = [i_obj,want_obj,{"name" : $scope.numberResult.toString(), "wobble" : false},$scope.item,please_obj] ;
+      $scope.questionArray = [ask_obj,r_num,$scope.item];
+      $scope.expectedResult = [i_obj,want_obj,r_num,$scope.item,please_obj] ;
 
     }
 		$scope.clicked = function(option) {
-			// console.log($scope.expectedResult[$scope.currentIndex].name);
-			// console.log(option.name);
+
+
+
 			if (option.name === $scope.expectedResult[$scope.currentIndex].name) {
 				$scope.currentIndex += 1;
 				$scope.resultLink.push(option);
@@ -121,12 +123,16 @@ app.controller('fabularController', function($scope, $stateParams, $rootScope, $
 			}
 		}
       else {
-
-				var index = $scope.optionsArray.indexOf($scope.expectedResult[$scope.currentIndex]);
-				console.log($scope.optionsArray);
-				console.log(index);
-				$scope.optionsArray[index].wobble = true;
-
+				var obj = $scope.optionsArray.filter(function(option){
+					return option.name === $scope.expectedResult.name;
+				});
+				console.log(obj);
+				obj.wobble = true;
+				$timeout(function () {
+					$scope.optionsArray.forEach(function(a){
+						a.wobble = false;
+					});
+				}, 1000);
 			}
 		};
   });
