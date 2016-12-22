@@ -22,8 +22,8 @@
   <span ng-repeat="result in resultLink"><img class="chainPic" ng-src="images/{{result.name}}.png"/></span>
 </div>
 <div class="options">
-<div ng-repeat="option in optionsArray" ng-click="clicked(option)">
-  <span><img class="promptPic" ng-src="images/{{option.name}}.png" alt="option" /></span>
+<div ng-repeat="option in optionsArray" ng-class="{ 'animated wobble error' : option.wobble === true }" ng-click="clicked(option)">
+  <span ><img class="promptPic" ng-src="images/{{option.name}}.png" alt="option" /></span>
 </div>
 </div>
 

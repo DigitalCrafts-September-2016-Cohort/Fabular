@@ -121,9 +121,10 @@ app.controller('fabularController', function($scope, $stateParams, $rootScope, $
 			}
 		}
       else {
-				$scope.str = "$scope." + $scope.expectedResult[$scope.currentIndex];
-        $scope.option = "animated wobble";
-				console.log($scope.option);
+				var index = $scope.optionsArray.indexOf($scope.expectedResult[$scope.currentIndex]);
+				console.log($scope.optionsArray);
+				console.log(index);
+				$scope.optionsArray[index].wobble = true;
 			}
 		};
   });
