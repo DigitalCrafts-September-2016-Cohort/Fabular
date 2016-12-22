@@ -122,6 +122,11 @@ app.controller('fabularController', function($scope, $stateParams, $rootScope, $
 		}
       else {
 
+				var index = $scope.optionsArray.indexOf($scope.expectedResult[$scope.currentIndex]);
+				console.log($scope.optionsArray);
+				console.log(index);
+				$scope.optionsArray[index].wobble = true;
+
 			}
 		};
   });
