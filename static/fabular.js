@@ -124,10 +124,9 @@ app.controller('fabularController', function($scope, $timeout,$stateParams, $roo
 		}
       else {
 				var obj = $scope.optionsArray.filter(function(option){
-					return option.name === $scope.expectedResult.name;
-				});
-				console.log(obj);
-				obj.wobble = true;
+						return option.name === $scope.expectedResult[$scope.currentIndex].name;
+					});
+				obj[0].wobble = true;
 				$timeout(function () {
 					$scope.optionsArray.forEach(function(a){
 						a.wobble = false;
