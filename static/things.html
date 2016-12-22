@@ -1,6 +1,6 @@
 <a ui-sref="settings">settings</a>
 <div class="reward">
-  <div>
+  <!-- <div>
     <img ng-show="currentIndex === 0" class="animated wobble" ng-src="images/egg{{currentIndex}}.png"/>
     <img ng-show="currentIndex === 1" class="animated wobble" ng-src="images/egg{{currentIndex}}.png"/>
     <img ng-show="currentIndex === 2" class="animated wobble" ng-src="images/egg{{currentIndex}}.png"/>
@@ -9,19 +9,26 @@
     <img ng-show="countWins === 1 || countWins === 2 || countWins === 3" ng-src="images/pinkChick.png"/>
     <img ng-show="countWins === 3 || countWins === 2" ng-src="images/greenChick.png"/>
     <img ng-show="countWins === 3" ng-src="images/purpleChick.png"/>
-  </div>
+  </div> -->
+</div>
+  
 <div class="prompt">
+  {{question}}
   <div ng-repeat = "question in questionArray">
-    <span><img class="promptPic" ng-src="images/{{question}}.png" alt="ask for" /></span>
+    <span><img class="promptPic" ng-src="images/{{question.name}}.png" alt="ask for" /></span>
   </div>
 </div>
 <div class="chainUrl">
-  <span ng-repeat="result in resultLink"><img class="chainPic" ng-src="images/{{result}}.png"/></span>
+  <span ng-repeat="result in resultLink"><img class="chainPic" ng-src="images/{{result.name}}.png"/></span>
 </div>
 <div class="options">
 <div ng-repeat="option in optionsArray" ng-click="clicked(option)">
+<<<<<<< HEAD
   <!-- <span id="{{option}}"><img class="promptPic" ng-src="images/{{option}}.png" alt="option" /></span> -->
     <span ng-class="{{option}} {{str}}"><img class="promptPic" ng-src="images/{{option}}.png" alt="option" /></span>
+=======
+  <span><img class="promptPic" ng-src="images/{{option.name}}.png" alt="option" /></span>
+>>>>>>> master
 </div>
 </div>
 

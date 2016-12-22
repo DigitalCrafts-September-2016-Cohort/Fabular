@@ -12,8 +12,13 @@ mongoose.connect('mongodb://localhost/fabular');
 mongoose.Promise = bluebird;
 
 const Cards = mongoose.model('card',{
-  name : String,
-  items : [String]
+  category : String,
+  items : [
+    {
+      name : String,
+      wobble : String
+    }
+    ]
 });
 
 
