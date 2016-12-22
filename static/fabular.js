@@ -1,7 +1,6 @@
 var app = angular.module('fabular', ['ui.router']);
 var chelevel = '';
 var resultLink = [];
-// var arrLength = 0;
 
 function textToSpeak(msg, idx) {
 	if (typeof msg !== 'string') {
@@ -60,36 +59,35 @@ app.controller('fabularController', function($scope, $stateParams, $rootScope, $
     if(chelevel === 1){
       $scope.optionsArray = data;
       $scope.expectedResult = [$scope.item];
-			// $scope.arrLength = $scope.expectedResult.length;
+
     }else if (chelevel === 2){
       data.unshift('want');
       $scope.optionsArray = data;
       $scope.expectedResult = ['want', $scope.item];
-			// $scope.arrLength = $scope.expectedResult.length;
+
       $scope.expectedResult = ['want',$scope.item];
     }else if (chelevel === 3){
       data.unshift('I','want');
       $scope.optionsArray = data;
       console.log($scope.optionsArray);
       $scope.expectedResult = ['I','want',$scope.item] ;
-			// $scope.arrLength = $scope.expectedResult.length;
     }else if (chelevel === 4){
       data.unshift('i','want','1','2','3');
       $scope.questionArray = ['ask',$scope.numberResult.toString(),$scope.item];
       $scope.optionsArray = data;
       console.log($scope.optionsArray);
       $scope.expectedResult = ['i','want',$scope.numberResult.toString(),$scope.item] ;
-			// $scope.arrLength = $scope.expectedResult.length;
+
     }else if (chelevel === 5){
       data.unshift('i','want','1','2','3');
       data.push('please');
       $scope.optionsArray = data;
       $scope.questionArray = ['ask',$scope.numberResult.toString(),$scope.item];
       $scope.expectedResult = ['i','want',$scope.numberResult.toString(),$scope.item,'please'] ;
-			// $scope.arrLength = $scope.expectedResult.length;
+
     }
 		$scope.clicked = function(option) {
-			// console.log('Answer array ' + $scope.expectedResult);
+
 			if (option === $scope.expectedResult[$scope.currentIndex]) {
 				$scope.currentIndex += 1;
 				$scope.resultLink.push(option);
@@ -115,13 +113,9 @@ app.controller('fabularController', function($scope, $stateParams, $rootScope, $
 				if ($scope.currentIndex === 1 || $scope.currentIndex === 2){
 				$scope.optionsArray.splice($scope.optionsArray.indexOf(option), 1);
 			}
-				// textToSpeak(option);
-			}
+		}
       else {
-        // textToSpeak(option);
-				// textToSpeak("Close, but not quite right. Let's try again");
-				
-        console.log('wrong item');
+        
 			}
 		};
   });
