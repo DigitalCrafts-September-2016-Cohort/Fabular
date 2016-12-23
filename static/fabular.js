@@ -53,6 +53,7 @@ app.controller('fabularController', function($scope, $timeout,$stateParams, $roo
 	var obj_2 = {"name" : "2", "wobble" : "false"};
 	var obj_3 = {"name" : "3", "wobble" : "false"};
 	$scope.countWins = 0;
+	$scope.bascket = [];
   chelevel = parseInt($stateParams.level);
   $scope.Again = function(){
   	fabularService.getThings().success(function(data){
