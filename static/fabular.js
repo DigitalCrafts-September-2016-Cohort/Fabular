@@ -1,7 +1,6 @@
 var app = angular.module('fabular', ['ui.router']);
 var chelevel = '';
 var resultLink = [];
-
 function textToSpeak(msg, idx) {
 	if (typeof msg !== 'string') {
 		throw new TypeError('Expected to say a string.');
@@ -55,7 +54,6 @@ app.controller('fabularController', function($scope, $timeout,$stateParams, $roo
 	$scope.countWins = 0;
 	$scope.bascket = [];
   chelevel = parseInt($stateParams.level);
-	$scope.basket = [];
   $scope.Again = function(){
   	fabularService.getThings().success(function(data){
     $scope.currentIndex = 0;
@@ -99,12 +97,14 @@ app.controller('fabularController', function($scope, $timeout,$stateParams, $roo
 
 		$scope.clicked = function(option) {
 			if (option.name === $scope.expectedResult[$scope.currentIndex].name) {
-
 				$scope.currentIndex += 1;
 				textToSpeak(option.name);
 				$scope.resultLink.push(option);
 				console.log($scope.optionsArray);
 				if(chelevel === 1 && $scope.currentIndex === 1){
+					console.log($scope.item);
+					// $scope.bascket.push($scope.item);
+					// console.log($scope.bascket);
           $scope.optionsArray = [];
 					console.log($scope.optionsArray);
         }
@@ -140,15 +140,49 @@ app.controller('fabularController', function($scope, $timeout,$stateParams, $roo
 					}, 1000);
 			}
 			if($scope.expectedResult.length === $scope.resultLink.length){
-				$scope.resultLink.forEach(function(value){
-					textToSpeak(value.name);
-					if(value.name in data.name){
-						for(let i=0;i<r;i++){
-							$scope.basket.push(value.name);
-						}
-					}
-				});
-				textToSpeak("Good Job, Would you like to play again?");
+				// $scope.resultLink.forEach(function(value){
+				// 	textToSpeak(value.name);
+				// 	if(value.name in data.name){
+				// 		for(var i=0;i<r;i++){
+				// 			console.log(value.name);
+				// 			$scope.basket.push(value.name);
+				// 		}
+				// 	}
+				// });
+				// textToSpeak("Good Job, Would you like to play again?");
+				console.log($scope.expectedResult.length);
+				console.log($scope.resultLink);
+				if($scope.expectedResult.length === 1){
+					console.log($scope.resultLink[$scope.expectedResult.length - 1].name);
+					// for(var i=0; i 1; i++) {
+					// 	$scope.bascket.push($scope.resultLink[$scope.expectedResult.length - 1].name);
+					// }
+				}
+				if($scope.expectedResult.length === 2){
+					console.log($scope.resultLink[$scope.expectedResult.length - 1].name);
+					// for(var i=0; i < 2; i++){
+					// 	$scope.bascket.push($scope.resultLink[$scope.expectedResult.length - 1].name);
+					// }
+				}
+				if($scope.expectedResult.length === 3){
+					console.log($scope.resultLink[$scope.expectedResult.length - 1].name);
+					// for(var i=0; i < 3; i++) {
+					// 	$scope.bascket.push($scope.resultLink[$scope.expectedResult.length - 1].name);
+					// }
+				}
+				if($scope.expectedResult.length === 4){
+					console.log($scope.resultLink[$scope.expectedResult.length - 1].name);
+					// for(var i=0; i < 4; i++) {
+					// 	$scope.bascket.push($scope.resultLink[$scope.expectedResult.length - 1].name);
+					// }
+				}
+				if($scope.expectedResult.length === 5){
+					console.log($scope.resultLink[$scope.expectedResult.length - 1].name);
+					// for(var i=0; i < 5; i++) {
+					// 	$scope.bascket.push($scope.resultLink[$scope.expectedResult.length - 1].name);
+					// }
+				}
+
 			}
 		};
   });
