@@ -3,7 +3,7 @@
   <img class="logo" src="images/fabulari_t1.png" alt="logo" />
   <div class="nav">
     <a ui-sref="settings">settings</a>
-    <img class="barn" src="images/barn.png" alt="barn" />
+    <a ui-sref="basket"> <img class="barn" src="images/barn.png" alt="barn" /></a>
   </div>
 </div>
 <div class="wrapper">
@@ -21,7 +21,6 @@
         </div> -->
 
       <div class="prompt animated slideInLeft">
-        {{basket}}
         <div ng-repeat = "question in questionArray">
           <span><img class="promptPic" ng-src="images/{{question.name}}.png" alt="ask for" /></span>
         </div>
