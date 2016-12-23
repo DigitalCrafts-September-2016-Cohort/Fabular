@@ -127,6 +127,7 @@ app.controller('fabularController', function($scope, $timeout,$stateParams, $roo
 			}
 		}
       else {
+				//if the user presses the wrong button
 				textToSpeak("Please press  "+$scope.expectedResult[$scope.currentIndex].name);
 				var obj = $scope.optionsArray.filter(function(option){
 						return option.name === $scope.expectedResult[$scope.currentIndex].name;
