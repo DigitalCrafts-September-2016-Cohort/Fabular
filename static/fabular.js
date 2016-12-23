@@ -46,8 +46,8 @@ return service;
 
 
 app.controller('fabularController', function($scope, $timeout,$stateParams, $rootScope, $state, fabularService) {
-	var i_obj = {"name" : "i", "wobble" : "false"};
-	var ask_obj = {"name" : "ask", "wobble" : "false"};
+	var i_obj = {"name" : "I", "wobble" : "false"};
+	var ask_obj = {"name" : "askfor", "wobble" : "false"};
 	var want_obj = {"name" : "want", "wobble" : "false"};
 	var obj_1 = {"name" : "1", "wobble" : "false"};
 	var obj_2 = {"name" : "2", "wobble" : "false"};
@@ -91,12 +91,13 @@ app.controller('fabularController', function($scope, $timeout,$stateParams, $roo
       $scope.expectedResult = [i_obj,want_obj,r_num,$scope.item,please_obj] ;
 
     }
+		$scope.questionArray.forEach(function(value){
+			textToSpeak(value.name);
+		});
 		$scope.clicked = function(option) {
-
-
-
 			if (option.name === $scope.expectedResult[$scope.currentIndex].name) {
 				$scope.currentIndex += 1;
+				textToSpeak(option.name);
 				$scope.resultLink.push(option);
 				console.log($scope.optionsArray);
 				if(chelevel === 1 && $scope.currentIndex === 1){
@@ -123,15 +124,22 @@ app.controller('fabularController', function($scope, $timeout,$stateParams, $roo
 			}
 		}
       else {
+				textToSpeak("Please press  "+$scope.expectedResult[$scope.currentIndex].name);
 				var obj = $scope.optionsArray.filter(function(option){
 						return option.name === $scope.expectedResult[$scope.currentIndex].name;
 					});
-				obj[0].wobble = true;
-				$timeout(function () {
-					$scope.optionsArray.forEach(function(a){
-						a.wobble = false;
-					});
-				}, 1000);
+					obj[0].wobble = true;
+					$timeout(function () {
+						$scope.optionsArray.forEach(function(a){
+							a.wobble = false;
+						});
+					}, 1000);
+			}
+			if($scope.expectedResult.length === $scope.resultLink.length){
+				$scope.resultLink.forEach(function(value){
+					textToSpeak(value.name);
+				});
+				textToSpeak("Good Job, Would you like to play again?");
 			}
 		};
   });
