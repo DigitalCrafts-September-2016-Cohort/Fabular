@@ -22,12 +22,13 @@ app.config(function($stateProvider,$urlRouterProvider){
     url : '/things/{level}',
     templateUrl : 'things.html',
     controller : 'fabularController'
+  })
+  .state({
+    name : 'basket',
+    url : '/basket',
+    templateUrl :'basket.html',
+		controller : 'fabularController'
   });
-  // .state({
-  //   name : 'settings',
-  //   url : '/settings',
-  //   templateUrl :'settings.html'
-  // });
   $urlRouterProvider.otherwise('/things');
 });
 
@@ -43,7 +44,6 @@ app.factory('fabularService',function($http){
 
 return service;
 });
-
 
 app.controller('fabularController', function($scope, $timeout,$stateParams, $rootScope, $state, fabularService) {
 	var i_obj = {"name" : "i", "wobble" : "false"};
@@ -102,10 +102,8 @@ app.controller('fabularController', function($scope, $timeout,$stateParams, $roo
 				$scope.currentIndex += 1;
 				textToSpeak(option.name);
 				$scope.resultLink.push(option);
-				console.log($scope.optionsArray);
 				if(chelevel === 1 && $scope.currentIndex === 1){
           $scope.optionsArray = [];
-					console.log($scope.optionsArray);
         }
 				if(chelevel === 2 && $scope.currentIndex === 2){
           $scope.optionsArray = [];
@@ -142,13 +140,16 @@ app.controller('fabularController', function($scope, $timeout,$stateParams, $roo
 			if($scope.expectedResult.length === $scope.resultLink.length){
 				$scope.resultLink.forEach(function(value){
 					textToSpeak(value.name);
-					if(value.name in data.name){
-						for(let i=0;i<r;i++){
-							$scope.basket.push(value.name);
-						}
+					});
+				if(chelevel === 4 || chelevel === 5){
+					for(let j=0;j<r;j++){
+						$scope.basket.push($scope.item.name);
 					}
-				});
+				}else{
+					$scope.basket.push($scope.item.name);
+				}
 				textToSpeak("Good Job, Would you like to play again?");
+				console.log($scope.basket);
 			}
 		};
   });
