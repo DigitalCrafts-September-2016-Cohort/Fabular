@@ -17,6 +17,7 @@
   },
   "homepage": "https://github.com/DigitalCrafts-September-2016-Cohort/Fabular#readme",
   "dependencies": {
+    "angular-touch": "^1.5.5",
     "bluebird": "^3.4.6",
     "body-parser": "^1.15.2",
     "browser-speak": "^0.1.0",

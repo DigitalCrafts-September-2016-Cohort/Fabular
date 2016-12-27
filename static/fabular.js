@@ -1,4 +1,4 @@
-var app = angular.module('fabular', ['ui.router']);
+var app = angular.module('fabular', ['ui.router',require('angular-touch')]);
 var chelevel = '';
 var resultLink = [];
 
