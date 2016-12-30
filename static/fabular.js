@@ -1,6 +1,8 @@
 var app = angular.module('fabular', ['ui.router']);
 var chelevel = '';
 var resultLink = [];
+//Holds reward items in basket array
+var basket = [];
 
 //Function for voice
 function textToSpeak(msg, idx) {
@@ -12,7 +14,7 @@ function textToSpeak(msg, idx) {
 		return console.warn('Your browser does not support `speechSynthesis` yet.');
 	}
 	var s = new SpeechSynthesisUtterance(msg);
-	s.voice = y.getVoices()[idx || 0];
+	s.voice = y.getVoices()[idx || 46];
 	y.speak(s);
 }
 
@@ -30,7 +32,7 @@ app.config(function($stateProvider,$urlRouterProvider){
     name : 'basket',
     url : '/basket',
     templateUrl :'basket.html',
-		controller : 'fabularController'
+		controller : 'basketController'
   });
   $urlRouterProvider.otherwise('/things');
 });
@@ -50,6 +52,10 @@ return service;
 });
 
 //Controllers
+app.controller('basketController', function($scope, $state, $rootScope) {
+	console.log($rootScope.basket);
+});
+
 app.controller('fabularController', function($scope, $timeout,$stateParams, $rootScope, $state, fabularService) {
 	var i_obj = {"name" : "i", "wobble" : "false"};
 	var ask_obj = {"name" : "askfor", "wobble" : "false"};
@@ -60,8 +66,6 @@ app.controller('fabularController', function($scope, $timeout,$stateParams, $roo
 	//Holds current winning rounds
 	$scope.countWins = 0;
   chelevel = parseInt($stateParams.level);
-	//Holds reward items in basket array
-	$scope.basket = [];
 	//Game wrapped in play again function
   $scope.Again = function(){
   	fabularService.getThings().success(function(data){
@@ -158,14 +162,15 @@ app.controller('fabularController', function($scope, $timeout,$stateParams, $roo
 				//Pushes 'x' number of prompt items into reward basket for levels 4 and 5
 				if(chelevel === 4 || chelevel === 5){
 					for(let j=0;j<r;j++){
-						$scope.basket.push($scope.item.name);
+						basket.push($scope.item.name);
 					}
 				//Pushes prompt item into reward basket
 				}else{
-					$scope.basket.push($scope.item.name);
+					basket.push($scope.item.name);
 				}
 				textToSpeak("Good Job, Would you like to play again?");
-				console.log($scope.basket);
+				console.log(basket);
+				$rootScope.basket = basket;
 			}
 		};
   });
