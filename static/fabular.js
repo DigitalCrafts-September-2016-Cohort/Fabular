@@ -72,6 +72,7 @@ app.controller('fabularController', function($scope, $timeout,$stateParams, $roo
 	//Game wrapped in play again function
 	$scope.levelChange = function(value){
 		chelevel = parseInt(value);
+		$scope.Again();
 	};
   $scope.Again = function(){
   	fabularService.getThings().success(function(data){
