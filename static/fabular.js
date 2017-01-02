@@ -1,6 +1,9 @@
 var app = angular.module('fabular', ['ui.router']);
 var chelevel = '';
 var resultLink = [];
+//Holds reward items in basket array
+var basket = [];
+var basketObj = {};
 
 function textToSpeak(msg, idx) {
 	if (typeof msg !== 'string') {
@@ -11,10 +14,9 @@ function textToSpeak(msg, idx) {
 		return console.warn('Your browser does not support `speechSynthesis` yet.');
 	}
 	var s = new SpeechSynthesisUtterance(msg);
-	s.voice = y.getVoices()[idx || 46];
+	s.voice = y.getVoices()[idx || 0];
 	y.speak(s);
 }
-
 
 //States
 app.config(function($stateProvider,$urlRouterProvider){
@@ -50,7 +52,10 @@ return service;
 
 //Controllers
 app.controller('basketController', function($scope, $state, $rootScope) {
-	console.log($rootScope.basket);
+	basket.forEach(function(item){
+		basketObj[item] = 0 || (basketObj[item] += 1);
+	});
+	console.log(basketObj);
 });
 
 app.controller('fabularController', function($scope, $timeout,$stateParams, $rootScope, $state, fabularService) {
@@ -107,7 +112,9 @@ app.controller('fabularController', function($scope, $timeout,$stateParams, $roo
 		$scope.questionArray.forEach(function(value){
 			textToSpeak(value.name);
 		});
-
+		$scope.basket = function(){
+			$scope.go(basket);
+		};
 //Click function
 		$scope.clicked = function(option) {
 			//Handles correct click events
@@ -156,10 +163,10 @@ app.controller('fabularController', function($scope, $timeout,$stateParams, $roo
 			}
 			//When user creates correct sentence
 			if($scope.expectedResult.length === $scope.resultLink.length){
-				//textToSpeak function reads the sentence
-				$scope.resultLink.forEach(function(value){
-					textToSpeak(value.name);
-					});
+				// //textToSpeak function reads the sentence
+				// $scope.resultLink.forEach(function(value){
+				// 	textToSpeak(value.name);
+				// 	});
 				//Pushes 'x' number of prompt items into reward basket for levels 4 and 5
 				if(chelevel === 4 || chelevel === 5){
 					for(let j=0;j<r;j++){
@@ -169,9 +176,8 @@ app.controller('fabularController', function($scope, $timeout,$stateParams, $roo
 				}else{
 					basket.push($scope.item.name);
 				}
-				textToSpeak("Good Job, Would you like to play again?");
-				console.log(basket);
-				$rootScope.basket = basket;
+				// textToSpeak("Good Job, Would you like to play again?");
+				$rootScope.basket = basketObj;
 			}
 		};
   });

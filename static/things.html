@@ -7,18 +7,6 @@
 </div>
 <div class="wrapper">
   <div class="viewer">
-    <!-- <div class="reward">
-      <div>
-          <img ng-show="currentIndex === 0" class="animated wobble" ng-src="images/egg{{currentIndex}}.png"/>
-          <img ng-show="currentIndex === 1" class="animated wobble" ng-src="images/egg{{currentIndex}}.png"/>
-          <img ng-show="currentIndex === 2" class="animated wobble" ng-src="images/egg{{currentIndex}}.png"/>
-          <img ng-show="currentIndex === 3" class="animated wobble" ng-src="images/egg{{currentIndex}}.png"/>
-        </div>
-          <img ng-show="countWins === 1 || countWins === 2 || countWins === 3" ng-src="images/pinkChick.png"/>
-          <img ng-show="countWins === 3 || countWins === 2" ng-src="images/greenChick.png"/>
-          <img ng-show="countWins === 3" ng-src="images/purpleChick.png"/>
-        </div> -->
-
       <div class="prompt animated slideInLeft">
         <div ng-repeat = "question in questionArray">
           <span><img class="promptPic" ng-src="images/{{question.name}}.png" alt="ask for" /></span>
@@ -29,7 +17,7 @@
       </div>
       <div class="options animated slideInRight">
         <div ng-repeat="option in optionsArray" ng-class="{ 'animated wobble error' : option.wobble === true }" ng-click="clicked(option)">
-          <span ><img class="promptPic" ng-src="images/{{option.name}}.png" alt="option" /></span>
+          <span><img class="promptPic" ng-src="images/{{option.name}}.png" alt="option" /></span>
         </div>
       </div>
       <div class="again">
@@ -37,4 +25,3 @@
       </div>
     </div>
   </div>
-</div>
