@@ -1,8 +1,7 @@
 var app = angular.module('fabular', ['ui.router']);
-var chelevel = '';
+var chelevel = 1;
 var resultLink = [];
 //Holds reward items in basket array
-var basket = [];
 var basketObj = {};
 
 function textToSpeak(msg, idx) {
@@ -65,11 +64,38 @@ app.controller('fabularController', function($scope, $timeout,$stateParams, $roo
 	var obj_1 = {"name" : "1", "wobble" : "false"};
 	var obj_2 = {"name" : "2", "wobble" : "false"};
 	var obj_3 = {"name" : "3", "wobble" : "false"};
+
+	$scope.clickedStatement = false;
+	$rootScope.inBasket = [];
+
+	// $scope.clickedBasket = function() {
+	// 	$scope.clickedStatement = true;
+	// 	basket.sort();
+	//
+	// 	var item = null;
+	// 	var cnt = 0;
+	// 	for (var i = 0; i < basket.length + 1; i++) {
+	// 	    if (basket[i] != item) {
+	// 	        if (cnt > 0) {
+	// 	            console.log(item + ': ' + cnt + ' times');
+	// 	        }
+	// 	        item = basket[i];
+	// 	        cnt = 1;
+	// 	    } else {
+	// 	        cnt++;
+	// 	    }
+	// 	  }
+	// };
+
 	//Holds current winning rounds
 	$scope.countWins = 0;
 	$scope.bascket = [];
   chelevel = parseInt($stateParams.level);
 
+	//Game wrapped in play again function
+	$scope.levelChange = function(value){
+		chelevel = parseInt(value);
+	};
   $scope.Again = function(){
   	fabularService.getThings().success(function(data){
     $scope.currentIndex = 0;
@@ -94,7 +120,9 @@ app.controller('fabularController', function($scope, $timeout,$stateParams, $roo
     }else if (chelevel === 3){
       data.unshift(i_obj,want_obj);
       $scope.optionsArray = data;
-      console.log($scope.optionsArray);
+      // console.log($scope.optionsArray);
+			console.log($scope.resultLink);
+
       $scope.expectedResult = [i_obj,want_obj,$scope.item] ;
     }else if (chelevel === 4){
       data.unshift(i_obj,want_obj,obj_1,obj_2,obj_3);
@@ -110,38 +138,52 @@ app.controller('fabularController', function($scope, $timeout,$stateParams, $roo
       $scope.expectedResult = [i_obj,want_obj,r_num,$scope.item,please_obj] ;
     }
 		$scope.questionArray.forEach(function(value){
-			textToSpeak(value.name);
+			// textToSpeak(value.name);
 		});
 		$scope.basket = function(){
 			$scope.go(basket);
 		};
 //Click function
 		$scope.clicked = function(option) {
+			console.log($rootScope.inBasket);
 			//Handles correct click events
 			if (option.name === $scope.expectedResult[$scope.currentIndex].name) {
 				$scope.currentIndex += 1;
-				textToSpeak(option.name);
+				// textToSpeak(option.name);
 				$scope.resultLink.push(option);
 				if(chelevel === 1 && $scope.currentIndex === 1){
 					console.log($scope.item);
 					// $scope.bascket.push($scope.item);
 					// console.log($scope.bascket);
           $scope.optionsArray = [];
+					console.log($scope.resultLink[$scope.currentIndex -1].name);
+					$rootScope.inBasket.push($scope.resultLink[$scope.currentIndex -1].name);
         }
 				if(chelevel === 2 && $scope.currentIndex === 2){
           $scope.optionsArray = [];
+					console.log($scope.resultLink[$scope.currentIndex -1].name);
+					$rootScope.inBasket.push($scope.resultLink[$scope.currentIndex -1].name);
         }
         if(chelevel === 3 && $scope.currentIndex === 3){
           $scope.optionsArray = [];
+					console.log($scope.resultLink[$scope.currentIndex -1].name);
+					$rootScope.inBasket.push($scope.resultLink[$scope.currentIndex -1].name);
         }
         if(chelevel === 4 && $scope.currentIndex === 4){
 					$scope.optionsArray = [];
+					console.log($scope.resultLink[$scope.currentIndex -1].name);
+					$rootScope.inBasket.push($scope.resultLink[$scope.currentIndex -1].name);
+					console.log($rootScope.inBasket);
         }
-				if((chelevel === 4 || chelevel === 5) && ($scope.currentIndex === 3 || $scope.currentIndex === 4)){
+				//Split levels because of splice in 153
+				if((chelevel === 4 && $scope.currentIndex === 3) || (chelevel === 5 && $scope.currentIndex === 4)){
 					$scope.optionsArray.splice(0,3);
+					console.log($scope.resultLink);
 				}
         if(chelevel === 5 && $scope.currentIndex === 5){
           $scope.optionsArray.pop();
+					console.log($scope.resultLink[$scope.currentIndex -1].name);
+					$rootScope.inBasket.push($scope.resultLink[$scope.currentIndex -1].name);
         }
 				if ($scope.currentIndex === 1 || $scope.currentIndex === 2){
 				$scope.optionsArray.splice($scope.optionsArray.indexOf(option), 1);
@@ -149,7 +191,7 @@ app.controller('fabularController', function($scope, $timeout,$stateParams, $roo
 		}
       else {
 				//Handles incorrect click events with verbal prompt for correct option
-				textToSpeak("Please press  "+$scope.expectedResult[$scope.currentIndex].name);
+				// textToSpeak("Please press  "+$scope.expectedResult[$scope.currentIndex].name);
 				var obj = $scope.optionsArray.filter(function(option){
 						return option.name === $scope.expectedResult[$scope.currentIndex].name;
 					});
@@ -162,23 +204,23 @@ app.controller('fabularController', function($scope, $timeout,$stateParams, $roo
 					}, 1000);
 			}
 			//When user creates correct sentence
-			if($scope.expectedResult.length === $scope.resultLink.length){
+			// if($scope.expectedResult.length === $scope.resultLink.length){
 				// //textToSpeak function reads the sentence
 				// $scope.resultLink.forEach(function(value){
 				// 	textToSpeak(value.name);
 				// 	});
 				//Pushes 'x' number of prompt items into reward basket for levels 4 and 5
-				if(chelevel === 4 || chelevel === 5){
-					for(let j=0;j<r;j++){
-						basket.push($scope.item.name);
-					}
+				// if(chelevel === 4 || chelevel === 5){
+				// 	for(let j=0;j<r;j++){
+				// 		inBasket.push($scope.item.name);
+				// 	}
 				//Pushes prompt item into reward basket
-				}else{
-					basket.push($scope.item.name);
-				}
+				// }else{
+				// 	inBasket.push($scope.item.name);
+				// }
 				// textToSpeak("Good Job, Would you like to play again?");
-				$rootScope.basket = basketObj;
-			}
+				// $rootScope.inBasket = basketObj;
+			// }
 		};
   });
 };

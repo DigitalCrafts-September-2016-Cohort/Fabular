@@ -1,12 +1,19 @@
 <div class="logoDiv">
+  <div ng-init="level=1">
+      <label><input type="radio" ng-model="level" value="1" ng-change="levelChange(level)" checked="checked">1</label>
+      <label><input type="radio" ng-model="level" value="2" ng-change="levelChange(level)">2 </label>
+      <label><input type="radio" ng-model="level" value="3" ng-change="levelChange(level)">3 </label>
+      <label><input type="radio" ng-model="level" value="4" ng-change="levelChange(level)">4 </label>
+      <label><input type="radio" ng-model="level" value="5" ng-change="levelChange(level)">5 </label>
+  </div>
   <img class="logo" src="images/fabulari_t1.png" alt="logo" />
   <div class="nav">
     <!-- <a ui-sref="settings">settings</a> -->
-    <a ui-sref="basket"> <img class="barn" src="images/barn.png" alt="barn" /></a>
+    <img class="barn" src="images/barn.png" alt="barn" ng-click="clickedBasket()" />
   </div>
 </div>
 <div class="wrapper">
-  <div class="viewer">
+  <div class="viewer" ng-if="clickedStatement === false">
       <div class="prompt animated slideInLeft">
         <div ng-repeat = "question in questionArray">
           <span><img class="promptPic" ng-src="images/{{question.name}}.png" alt="ask for" /></span>
@@ -22,6 +29,12 @@
       </div>
       <div class="again">
         <button class="round-button animated pulse infinite" ng-if="expectedResult.length === resultLink.length" ng-click="playAgain()">Play Again?</button>
+      </div>
+    </div>
+    <div class="basket viewer" ng-if="clickedStatement === true">
+      <h1>Basket</h1>
+      <div ng-repeat = "item in basketObj">
+        <span><img ng-src="images/{{item}}.png" alt="item" /></span>
       </div>
     </div>
   </div>
