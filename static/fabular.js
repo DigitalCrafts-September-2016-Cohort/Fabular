@@ -1,5 +1,5 @@
 var app = angular.module('fabular', ['ui.router']);
-var chelevel = '';
+var chelevel = 1;
 var resultLink = [];
 //Holds reward items in basket array
 var basket = [];
@@ -66,10 +66,13 @@ app.controller('fabularController', function($scope, $timeout,$stateParams, $roo
 	var obj_1 = {"name" : "1", "wobble" : "false"};
 	var obj_2 = {"name" : "2", "wobble" : "false"};
 	var obj_3 = {"name" : "3", "wobble" : "false"};
+
 	//Holds current winning rounds
 	$scope.countWins = 0;
-  chelevel = parseInt($stateParams.level);
 	//Game wrapped in play again function
+	$scope.levelChange = function(value){
+		chelevel = parseInt(value);
+	};
   $scope.Again = function(){
   	fabularService.getThings().success(function(data){
     $scope.currentIndex = 0;
