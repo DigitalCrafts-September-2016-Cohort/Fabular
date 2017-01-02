@@ -22,7 +22,7 @@ const Cards = mongoose.model('card',{
 });
 
 
-app.get('/things/:level',function(request,response){
+app.get('/things',function(request,response){
   // var theLevel = request.params.level;
 Cards.find()
   .then(function(obj){
