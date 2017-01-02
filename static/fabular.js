@@ -23,7 +23,7 @@ app.config(function($stateProvider,$urlRouterProvider){
   $stateProvider
   .state({
     name : 'things',
-    url : '/things/{level}',
+    url : '/things',
     templateUrl : 'things.html',
     controller : 'fabularController'
   })
@@ -40,7 +40,7 @@ app.config(function($stateProvider,$urlRouterProvider){
 app.factory('fabularService',function($http){
   var service = {};
   service.getThings = function(){
-    var url = '/things/{level}';
+    var url = '/things';
     return $http({
       method : 'GET',
       url : url
