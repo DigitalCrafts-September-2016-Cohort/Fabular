@@ -1,5 +1,8 @@
 body {
-  background-color: #c5e1fb;
+  /*background-color: #c5e1fb;*/
+  background-image: url("http://spinningtop.com.au/wp-content/uploads/2015/10/url.jpg");
+  background-size: cover;
+  overflow: hidden;
 }
 
 img {
@@ -13,12 +16,15 @@ button {
 }
 
 img.logo {
-  height: 80px;
-  margin-top: 10px;
+  height: 100px;
+  position: absolute;
+  top: 0;
+  left: 0;
+  transform: translate(273%, 313%) skew(-4deg, 1deg);
 }
 
-img.barn {
-  height: 30px;
+img.basket {
+  height: 100px;
 }
 
 .nav {
@@ -32,19 +38,22 @@ img.barn {
   display: flex;
   align-items: center;
   justify-content: center;
-  background-color: #7dbcf7
+  background: rgba(125, 188, 247, 0.7);
+  width: 700px;
 }
 
 .wrapper {
   border: 5px solid #244DA9;
   border-radius: 0 0 120px 120px;
   border-top: none;
-  background: #7dbcf7;
+  background: rgba(125, 188, 247, 0.7);
   /*background: #3597f2;*/
+  width: 700px;
+  margin-top: -10px;
 }
 
 .viewer {
-  border: 5px solid #65b0f4;
+  /*border: 5px solid #65b0f4;*/
   border-radius: 0 0 114px 114px;
 
 }
@@ -143,3 +152,55 @@ img.barn {
 .round-button:hover {
     background: #0d255a;
 }
+.basket {
+  height: 400px;
+}
+.level {
+  width: 35px;
+  height: 35px;
+  border: 2px solid #c5e1fb;
+  border-radius: 50%;
+  color: #f5f5f5;
+  text-align: center;
+  text-decoration: none;
+  background: #244da9;
+  box-shadow: 0 0 3px grey;
+  font-size: 20px;
+  font-weight: bold;
+  font-family: 'Nunito Sans', sans-serif;
+}
+
+.level:hover {
+  background: #C5E1FB;
+  color: #244DA9;
+  border-color: #244DA9;
+}
+
+.sign {
+  height: 300px;
+  position: absolute;
+  top: 0;
+  left: 0;
+  transform: translate(178%,75%);
+}
+
+.app {
+  position: absolute;
+  top: 0;
+  left: 0;
+  transform: translate(22%, 7%);
+  /*not sure if needed*/
+  width: 60%;
+}
+
+/*.signPost {
+  position: absolute;
+  top: 0;
+  left: 0;
+  transform: translate(249%, 100%);
+}*/
+
+/*.cloud {
+  width: 300px;
+  height: 300px;
+}*/
