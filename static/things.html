@@ -1,19 +1,27 @@
 <div class="logoDiv">
   <div ng-init="levelChange(1)">
+<<<<<<< HEAD
       <button type="button" name="1" ng-click="levelChange(1)">1</button>
       <button type="button" name="2" ng-click="levelChange(2)">2</button>
       <button type="button" name="3" ng-click="levelChange(3)">3</button>
       <button type="button" name="4" ng-click="levelChange(4)">4</button>
       <button type="button" name="5" ng-click="levelChange(5)">5</button>
+=======
+      <button type="button" name="1" ng-click="levelChange(1)" class="level">1</button>
+      <button type="button" name="2" ng-click="levelChange(2)" class="level">2</button>
+      <button type="button" name="3" ng-click="levelChange(3)" class="level">3</button>
+      <button type="button" name="4" ng-click="levelChange(4)" class="level">4</button>
+      <button type="button" name="5" ng-click="levelChange(5)" class="level">5</button>
+>>>>>>> master
   </div>
   <img class="logo" src="images/fabulari_t1.png" alt="logo" />
   <div class="nav">
     <!-- <a ui-sref="settings">settings</a> -->
-    <img class="barn" src="images/barn.png" alt="barn" ng-click="clickedBasket()" />
+    <img class="basket" src="images/basket.png" alt="barn" ng-click="clickedBasket()" />
   </div>
 </div>
 <div class="wrapper">
-  <div class="viewer" ng-if="clickedStatement === false">
+  <div class="viewer" ng-show="clickedStatement === false">
       <div class="prompt animated slideInLeft">
         <div ng-repeat = "question in questionArray">
           <span><img class="promptPic" ng-src="images/{{question.name}}.png" alt="ask for" /></span>
@@ -31,9 +39,10 @@
         <button class="round-button animated pulse infinite" ng-if="expectedResult.length === resultLink.length" ng-click="playAgain()">Play Again?</button>
       </div>
     </div>
-    <div class="basket viewer" ng-if="clickedStatement === true">
+
+    <div class="basket viewer" ng-show="clickedStatement === true">
       <h1>Basket</h1>
-      <div ng-repeat = "item in basketObj">
+      <div ng-repeat = "item in basket track by $index">
         <span><img ng-src="images/{{item}}.png" alt="item" /></span>
       </div>
     </div>

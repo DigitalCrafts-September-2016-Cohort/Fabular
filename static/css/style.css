@@ -17,8 +17,8 @@ img.logo {
   margin-top: 10px;
 }
 
-img.barn {
-  height: 30px;
+img.basket {
+  height: 60px;
 }
 
 .nav {
@@ -145,4 +145,24 @@ img.barn {
 }
 .basket {
   height: 400px;
+}
+.level {
+  width: 35px;
+  height: 35px;
+  border: 2px solid #c5e1fb;
+  border-radius: 50%;
+  color: #f5f5f5;
+  text-align: center;
+  text-decoration: none;
+  background: #244da9;
+  box-shadow: 0 0 3px grey;
+  font-size: 20px;
+  font-weight: bold;
+  font-family: 'Nunito Sans', sans-serif;
+}
+
+.level:hover {
+  background: #C5E1FB;
+  color: #244DA9;
+  border-color: #244DA9;
 }
