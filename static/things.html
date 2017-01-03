@@ -1,3 +1,7 @@
+<div class="playAgain">
+  <img class="cloud animated slideInLeft" ng-if="expectedResult.length === resultLink.length" ng-click="playAgain()" src="images/cloud.png" alt="cloud" />
+</div>
+</div>
 <div class="app">
   <div class="logoDiv">
     <div ng-init="levelChange(1)">
@@ -28,10 +32,9 @@
             <span><img class="promptPic" ng-src="images/{{option.name}}.png" alt="option" /></span>
           </div>
         </div>
-        <div class="again">
+        <!-- <div class="again">
           <button class="round-button animated pulse infinite" ng-if="expectedResult.length === resultLink.length" ng-click="playAgain()">Play Again?</button>
-        </div>
-      </div>
+        </div> -->
 
       <div class="basket viewer" ng-show="clickedStatement === true">
         <h1>Basket</h1>
