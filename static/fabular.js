@@ -58,7 +58,9 @@ app.controller('fabularController', function($scope, $timeout,$stateParams, $roo
 	var inBasket = [];
 
 	$scope.clickedBasket = function() {
-		$scope.clickedStatement = true;
+		if($scope.clickedStatement === false){
+      $scope.clickedStatement = true;
+
 		inBasket.sort();
 
 		var item = null;
@@ -74,6 +76,9 @@ app.controller('fabularController', function($scope, $timeout,$stateParams, $roo
 		        cnt++;
 		    }
 		  }
+		} else if($scope.clickedStatement === true) {
+			$scope.clickedStatement = false;
+		}
 	};
 
 	//Holds current winning rounds

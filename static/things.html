@@ -13,7 +13,7 @@
   </div>
 </div>
 <div class="wrapper">
-  <div class="viewer" ng-if="clickedStatement === false">
+  <div class="viewer" ng-show="clickedStatement === false">
       <div class="prompt animated slideInLeft">
         <div ng-repeat = "question in questionArray">
           <span><img class="promptPic" ng-src="images/{{question.name}}.png" alt="ask for" /></span>
@@ -32,7 +32,7 @@
       </div>
     </div>
 
-    <div class="basket viewer" ng-if="clickedStatement === true">
+    <div class="basket viewer" ng-show="clickedStatement === true">
       <h1>Basket</h1>
       <div ng-repeat = "item in basket track by $index">
         <span><img ng-src="images/{{item}}.png" alt="item" /></span>
