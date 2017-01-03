@@ -188,7 +188,7 @@ img.basket {
   position: absolute;
   top: 0;
   left: 0;
-  transform: translate(22%, 7%);
+  transform: translate(38%, 26%);
   /*not sure if needed*/
   width: 60%;
 }
@@ -200,7 +200,7 @@ img.basket {
   transform: translate(249%, 100%);
 }*/
 
-/*.cloud {
-  width: 300px;
-  height: 300px;
-}*/
+.cloud {
+  width: 30%;
+  height: 30%;
+}
