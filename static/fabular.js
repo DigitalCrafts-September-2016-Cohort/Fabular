@@ -60,7 +60,7 @@ app.controller('fabularController', function($scope, $timeout,$stateParams, $roo
 	$scope.clickedBasket = function() {
 		if($scope.clickedStatement === false){
       $scope.clickedStatement = true;
-
+			console.log($scope.clickedStatement);
 		inBasket.sort();
 
 		var item = null;
@@ -78,6 +78,8 @@ app.controller('fabularController', function($scope, $timeout,$stateParams, $roo
 		  }
 		} else if($scope.clickedStatement === true) {
 			$scope.clickedStatement = false;
+			console.log($scope.clickedStatement);
+
 		}
 	};
 
