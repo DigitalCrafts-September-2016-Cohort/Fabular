@@ -1,9 +1,9 @@
-var app = angular.module('fabular', ['ui.router']);
+var app = angular.module('fabular', []);
 var chelevel = 1;
 var resultLink = [];
 //Holds reward items in basket array
 var basket = [];
-var basketObj = {};
+
 
 //Function for voice
 function textToSpeak(msg, idx) {
