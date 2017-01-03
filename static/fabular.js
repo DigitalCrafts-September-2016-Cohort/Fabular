@@ -65,37 +65,43 @@ app.controller('fabularController', function($scope, $timeout,$stateParams, $roo
 	var obj_2 = {"name" : "2", "wobble" : "false"};
 	var obj_3 = {"name" : "3", "wobble" : "false"};
 
-	$scope.clickedStatement = false;
-	$rootScope.inBasket = [];
+	$rootScope.clickedStatement = false;
+	$scope.inBasket = [];
 
-	// $scope.clickedBasket = function() {
-	// 	$scope.clickedStatement = true;
-	// 	basket.sort();
-	//
-	// 	var item = null;
-	// 	var cnt = 0;
-	// 	for (var i = 0; i < basket.length + 1; i++) {
-	// 	    if (basket[i] != item) {
-	// 	        if (cnt > 0) {
-	// 	            console.log(item + ': ' + cnt + ' times');
-	// 	        }
-	// 	        item = basket[i];
-	// 	        cnt = 1;
-	// 	    } else {
-	// 	        cnt++;
-	// 	    }
-	// 	  }
-	// };
+	$scope.clickedBasket = function() {
+		console.log("check");
+		if($rootScope.clickedStatement === false){
+			$rootScope.clickedStatement = true;
+			console.log($rootScope.clickedStatement);
+			$scope.inBasket.sort();
+			var item = null;
+			var cnt = 0;
+			for (var i = 0; i < $scope.inBasket.length + 1; i++) {
+			    if ($scope.inBasket[i] != item) {
+			        if (cnt > 0) {
+			            console.log(item + ': ' + cnt + ' times');
+			        }
+			        item = $scope.inBasket[i];
+			        cnt = 1;
+			    } else {
+			        cnt++;
+			    }
+			  }
+		}
+		else if($rootScope.clickedStatement === true){
+			$rootScope.clickedStatement = false;
+		}
+	};
 
 	//Holds current winning rounds
 	$scope.countWins = 0;
-	$scope.bascket = [];
+
   chelevel = parseInt($stateParams.level);
 
 	//Game wrapped in play again function
 	$scope.levelChange = function(value){
 		chelevel = parseInt(value);
-		$scope.Again();
+		// $scope.Again();
 	};
   $scope.Again = function(){
   	fabularService.getThings().success(function(data){
@@ -146,7 +152,7 @@ app.controller('fabularController', function($scope, $timeout,$stateParams, $roo
 		};
 //Click function
 		$scope.clicked = function(option) {
-			console.log($rootScope.inBasket);
+			console.log($scope.inBasket);
 			//Handles correct click events
 			if (option.name === $scope.expectedResult[$scope.currentIndex].name) {
 				$scope.currentIndex += 1;
@@ -158,22 +164,22 @@ app.controller('fabularController', function($scope, $timeout,$stateParams, $roo
 					// console.log($scope.bascket);
           $scope.optionsArray = [];
 					console.log($scope.resultLink[$scope.currentIndex -1].name);
-					$rootScope.inBasket.push($scope.resultLink[$scope.currentIndex -1].name);
+					$scope.inBasket.push($scope.resultLink[$scope.currentIndex -1].name);
         }
 				if(chelevel === 2 && $scope.currentIndex === 2){
           $scope.optionsArray = [];
 					console.log($scope.resultLink[$scope.currentIndex -1].name);
-					$rootScope.inBasket.push($scope.resultLink[$scope.currentIndex -1].name);
+					$scope.inBasket.push($scope.resultLink[$scope.currentIndex -1].name);
         }
         if(chelevel === 3 && $scope.currentIndex === 3){
           $scope.optionsArray = [];
 					console.log($scope.resultLink[$scope.currentIndex -1].name);
-					$rootScope.inBasket.push($scope.resultLink[$scope.currentIndex -1].name);
+					$scope.inBasket.push($scope.resultLink[$scope.currentIndex -1].name);
         }
         if(chelevel === 4 && $scope.currentIndex === 4){
 					$scope.optionsArray = [];
 					console.log($scope.resultLink[$scope.currentIndex -1].name);
-					$rootScope.inBasket.push($scope.resultLink[$scope.currentIndex -1].name);
+					$scope.inBasket.push($scope.resultLink[$scope.currentIndex -1].name);
 					console.log($rootScope.inBasket);
         }
 				//Split levels because of splice in 153
@@ -184,7 +190,7 @@ app.controller('fabularController', function($scope, $timeout,$stateParams, $roo
         if(chelevel === 5 && $scope.currentIndex === 5){
           $scope.optionsArray.pop();
 					console.log($scope.resultLink[$scope.currentIndex -1].name);
-					$rootScope.inBasket.push($scope.resultLink[$scope.currentIndex -1].name);
+					$scope.inBasket.push($scope.resultLink[$scope.currentIndex -1].name);
         }
 				if ($scope.currentIndex === 1 || $scope.currentIndex === 2){
 				$scope.optionsArray.splice($scope.optionsArray.indexOf(option), 1);
