@@ -209,3 +209,63 @@ $scope.playAgain = function(){
 $scope.Again();
 };
 });
+
+
+
+
+// popup
+
+var tour = {
+  id: "hello-hopscotch-a",
+  steps: [{
+    title: "Application Menu",
+    content: "Click here to open and close the appliation menu",
+    target: "btn-menu",
+    placement: "bottom",
+    xOffset: 14,
+    // arrowOffset: 3,
+		//getElementsByClassName
+    onShow: function() {
+      document.getElementById("btn-menu").style.zIndex = 9999999999999;
+			document.getElementById("entire").style.zIndex = 1;    },
+    onNext: function() {
+      document.getElementById("btn-menu").style.zIndex = 0;
+			document.getElementById("entire").style.zIndex = 0;
+    }
+  }, {
+    title: "System Information",
+    content: "Click here to acces info about the current state of the system",
+    target: "btn-system",
+    placement: "bottom",
+    xOffset: 275, // this will set the left - right
+    // arrowOffset: 260,
+    onShow: function() {
+      document.getElementById("btn-system").style.zIndex = 9999999999999;
+    },
+    onNext: function() {
+      document.getElementById("btn-system").style.zIndex = 0;
+    }
+  }, {
+    title: "User Information",
+    content: "Click here to logout, switch users, and opt out of the beta",
+    target: "btn-user",
+    placement: "bottom",
+    xOffset: 290, // this will set the left - right
+    yOffset: 300,
+    // arrowOffset: 500,
+    onShow: function() {
+      document.getElementById("btn-user").style.zIndex = 9999999999999;
+    },
+    onNext: function() {
+      document.getElementById("btn-user").style.zIndex = 0;
+    }
+  }],
+  onStart: function() {
+    document.getElementById("mask").className = "mask masked";
+  },
+  onEnd: function() {
+    document.getElementById("mask").className = "mask";
+  }
+};
+
+hopscotch.startTour(tour, 0);
