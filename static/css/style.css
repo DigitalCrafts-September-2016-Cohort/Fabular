@@ -2,11 +2,13 @@ body {
   /*background-color: #c5e1fb;*/
   background-image: url("rainbowbg.jpg");
   background-size: cover;
+  background-repeat: no-repeat;
   overflow: hidden;
 }
 
 img {
-  height: 80px;
+  height: 100px;
+  margin: 20px;
 }
 
 button {
@@ -49,8 +51,7 @@ img.basket {
 
 .wrapper {
   border: 5px solid #244DA9;
-  border-radius: 0 0 120px 120px;
-  border-top: none;
+  border-radius: 120px 120px 120px 120px;
   background: rgba(125, 188, 247, 0.7);
   /*background: #3597f2;*/
   width: 700px;
@@ -215,13 +216,24 @@ img.basket {
   font-size: 20px;
 }
 
-ul {
-  /*list-style-type: none;*/
-  font-family: 'Nunito Sans', sans-serif;
-  font-size: 25px;
-  font-weight: bolder;
+.more {
+  position: absolute;
+  top: 17%;
+  left: 5%;
+  height: 10%;
+}
+
+.basket2 {
+  border: 4px solid pink;
+  display: flex;
+  justify-content: center;
+  align-content: center;
+  margin-top: 4%;
+  overflow: scroll;
+}
+.menu {
   position: absolute;
   top: 0;
   left: 0;
-  transform: translate(534%, 318%) skew(-4deg, 1deg);
+  transform: translate(1080%,-14%);
 }

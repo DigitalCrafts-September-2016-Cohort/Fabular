@@ -1,7 +1,6 @@
-<div class="playAgain">
   <img class="cloud animated slideInLeft" ng-if="expectedResult.length === resultLink.length" ng-click="playAgain()" src="img/cloud.png" alt="cloud" />
-  <p ng-if="expectedResult.length === resultLink.length" class="againWords">Play Again?</p>
-</div>
+  <img class="more animated pulse infinite" ng-if="expectedResult.length === resultLink.length" ng-click="playAgain()" src="img/more.png" alt="more" />
+  <img class="menu" src="img/menu.png" alt="menu" />
 <div class="app">
   <!-- merge logoDiv with wrapper -->
   <!-- <div class="logoDiv">
@@ -39,9 +38,11 @@
 
     </div>
     <div class="basketDiv" ng-show="clickedStatement">
-      <h1>Basket</h1>
-      <div ng-repeat = "item in basket track by $index">
-        <span><img ng-src="img/{{item}}.png" alt="item" /></span>
+      <div class="basket2">
+        <h1>Basket</h1>
+        <div ng-repeat = "item in basket track by $index">
+          <span><img ng-src="img/{{item}}.png" alt="item" /></span>
+        </div>
       </div>
     </div>
 </div>
