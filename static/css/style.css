@@ -71,15 +71,11 @@ img.basket {
 }
 
 .error{
-  /*border: 4px solid red;
-  border-radius: 10px;*/
   background:
-   /* top, transparent red, faked with gradient */
    linear-gradient(
      rgba(255, 0, 0, 0.7),
      rgba(255, 0, 0, 0.7)
    )
-
 }
 
 .board {

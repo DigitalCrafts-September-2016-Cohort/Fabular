@@ -1,5 +1,5 @@
 
-  <a ui-serf="settings"> <img class="menu" src="img/menu.png" alt="gear menu" /></a>
+<a ui-serf="settings"> <img class="menu" src="img/menu.png" alt="gear menu" /></a>
 <div class="app">
   <!-- merge logoDiv with wrapper -->
   <!-- <div class="logoDiv">
@@ -29,7 +29,7 @@
         </div>
         <div class="options animated slideInRight">
           <div ng-repeat="option in optionsArray" ng-class="{ 'animated wobble error' : option.wobble === true }" ng-click="clicked(option)">
-            <span><img class="promptPic" ng-src="img/{{option.name}}.png" alt="option" /></span>
+            <span><img class="promptPic" ng-if="expectedResult.length !== resultLink.length" ng-src="img/{{option.name}}.png" alt="option" /></span>
           </div>
         </div>
         <!-- <div class="again">
