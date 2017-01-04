@@ -1,6 +1,5 @@
-  <img class="cloud animated slideInLeft" ng-if="expectedResult.length === resultLink.length" ng-click="playAgain()" src="img/cloud.png" alt="cloud" />
-  <img class="more animated pulse infinite" ng-if="expectedResult.length === resultLink.length" ng-click="playAgain()" src="img/more.png" alt="more" />
-  <img class="menu" src="img/menu.png" alt="menu" />
+
+  <a ui-serf="settings"> <img class="menu" src="img/menu.png" alt="gear menu" /></a>
 <div class="app">
   <!-- merge logoDiv with wrapper -->
   <!-- <div class="logoDiv">
@@ -21,11 +20,12 @@
     <div class="viewer" ng-show="clickedStatement === false">
         <div class="prompt animated slideInLeft">
           <div ng-repeat = "question in questionArray">
-            <span><img class="promptPic" ng-src="img/{{question.name}}.png" alt="ask for" /></span>
+            <span><img class="promptPic" ng-if="expectedResult.length !== resultLink.length" ng-src="img/{{question.name}}.png" alt="ask for" /></span>
           </div>
         </div>
         <div class="chainUrl">
-          <span ng-repeat="result in resultLink"><img class="chainPic" ng-src="img/{{result.name}}.png"/></span>
+          <img class="more animated pulse infinite" ng-if="expectedResult.length === resultLink.length" ng-click="playAgain()" src="img/more.png" alt="more" />
+          <span ng-repeat="result in resultLink"><img class="chainPic" ng-if="expectedResult.length !== resultLink.length" ng-src="img/{{result.name}}.png"/></span>
         </div>
         <div class="options animated slideInRight">
           <div ng-repeat="option in optionsArray" ng-class="{ 'animated wobble error' : option.wobble === true }" ng-click="clicked(option)">
@@ -40,9 +40,8 @@
     <div class="basketDiv" ng-show="clickedStatement">
       <div class="basket2">
         <h1>Basket</h1>
-        <div ng-repeat = "item in basket track by $index">
-          <span><img ng-src="img/{{item}}.png" alt="item" /></span>
-        </div>
+        <img ng-repeat="item in basket track by $index" ng-src="img/{{item}}.png" alt="item" />
+
       </div>
     </div>
 </div>
@@ -51,4 +50,10 @@
   <img src="img/sign.png" alt="sign" class="sign" />
   <img src="img/fabulari_t1.png" alt="logo" class="logo"/>
 </div>
-  <img class="basket" src="img/basket.png" alt="basket" ng-click="clickedBasket()" />
+<img class="basket" src="img/basket.png" alt="basket" ng-click="clickedBasket()" />
+<!-- <div class="mas">
+  <img class="more animated pulse infinite" ng-if="expectedResult.length === resultLink.length" ng-click="playAgain()" src="img/more.png" alt="more" />
+</div> -->
+<div class="otra">
+  <img class="mole animated bounceInUp" ng-if="expectedResult.length === resultLink.length" ng-click="playAgain()" src="img/mole.png" alt="mole" />
+</div>

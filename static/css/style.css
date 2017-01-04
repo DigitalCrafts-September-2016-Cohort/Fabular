@@ -3,7 +3,7 @@ body {
   background-image: url("rainbowbg.jpg");
   background-size: cover;
   background-repeat: no-repeat;
-  overflow: hidden;
+  /*overflow: hidden;*/
 }
 
 img {
@@ -71,8 +71,15 @@ img.basket {
 }
 
 .error{
-  border: 4px solid red; /*border is messing up spacing */
-  border-radius: 10px;
+  /*border: 4px solid red;
+  border-radius: 10px;*/
+  background:
+   /* top, transparent red, faked with gradient */
+   linear-gradient(
+     rgba(255, 0, 0, 0.7),
+     rgba(255, 0, 0, 0.7)
+   )
+
 }
 
 .board {
@@ -134,11 +141,11 @@ img.basket {
    float: right;
  }
 
- .again {
+ /*.again {
    display: flex;
    align-items: center;
    justify-content: center;
- }
+ }*/
 
  .round-button {
    display: block;
@@ -207,8 +214,12 @@ img.basket {
 }*/
 
 .cloud {
-  width: 30%;
+  /*width: 30%;
   height: 30%;
+  position: absolute;
+  top: 0;
+  left: 0;
+  transform: translate(10%, 10%);*/
 }
 
 .againWords {
@@ -218,22 +229,42 @@ img.basket {
 
 .more {
   position: absolute;
-  top: 17%;
-  left: 5%;
-  height: 10%;
+  top: 21%;
+  left: 25%;
+  height: 60px;
 }
 
 .basket2 {
   border: 4px solid pink;
-  display: flex;
-  justify-content: center;
-  align-content: center;
+  /*display: flex;*/
+  /*justify-content: center;
+  align-content: center;*/
   margin-top: 4%;
   overflow: scroll;
+  width: 80%;
 }
+
+/*gear menu*/
 .menu {
   position: absolute;
   top: 0;
   left: 0;
   transform: translate(1080%,-14%);
 }
+
+.otra {
+  position: absolute;
+  top: 0;
+  left: 0;
+  transform: translate(158%,151%);
+}
+
+img.mole {
+  height: 200px;
+}
+/*.mas {
+  position: absolute;
+  top: 0;
+  left: 0;
+  transform: translate(0%, 0%);
+}*/

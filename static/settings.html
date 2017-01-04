@@ -1,10 +1,14 @@
-<div>
-  <form ng-submit="set()" ng-init="level = 1">
-    <span><input type="radio" ng-model="level" value="1" > Level 1 </span>
-    <span><input type="radio" ng-model="level" value="2"> Level 2 </span>
-    <span><input type="radio" ng-model="level" value="3"> Level 3 </span>
-    <span><input type="radio" ng-model="level" value="4"> Level 4 </span>
-    <span><input type="radio" ng-model="level" value="5"> Level 5 </span>
-    <button type="sumbit" name="button">Submit</button>
-  </form>
+<img src="img/fabulari_t1.png" alt="logo" />
+
+<h1>Levels</h1>
+<div ng-init="levelChange(1)">
+    <button type="button" name="1" ng-click="levelChange(1)" class="level">1</button>
+    <button type="button" name="2" ng-click="levelChange(2)" class="level">2</button>
+    <button type="button" name="3" ng-click="levelChange(3)" class="level">3</button>
+    <button type="button" name="4" ng-click="levelChange(4)" class="level">4</button>
+    <button type="button" name="5" ng-click="levelChange(5)" class="level">5</button>
 </div>
+
+<h1>Categories</h1>
+
+<h1>About</h1>
