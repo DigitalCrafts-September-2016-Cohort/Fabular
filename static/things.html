@@ -20,21 +20,18 @@
     <div class="viewer" ng-show="clickedStatement === false">
         <div class="prompt animated slideInLeft">
           <div ng-repeat = "question in questionArray">
-            <span><img class="promptPic" ng-if="expectedResult.length !== resultLink.length" ng-src="img/{{question.name}}.png" alt="ask for" /></span>
+            <span><img class="promptPic"  ng-src="img/{{question.name}}.png" alt="ask for" /></span>
           </div>
         </div>
         <div class="chainUrl">
-          <img class="more animated pulse infinite" ng-if="expectedResult.length === resultLink.length" ng-click="playAgain()" src="img/more.png" alt="more" />
-          <span ng-repeat="result in resultLink"><img class="chainPic" ng-if="expectedResult.length !== resultLink.length" ng-src="img/{{result.name}}.png"/></span>
+          <!-- <img class="more animated pulse infinite" ng-if="expectedResult.length === resultLink.length" ng-click="playAgain()" src="img/more.png" alt="more" /> -->
+          <span ng-repeat="result in resultLink"><img class="chainPic"  ng-src="img/{{result.name}}.png"/></span>
         </div>
         <div class="options animated slideInRight">
           <div ng-repeat="option in optionsArray" ng-class="{ 'animated wobble error' : option.wobble === true }" ng-click="clicked(option)">
-            <span><img class="promptPic" ng-if="expectedResult.length !== resultLink.length" ng-src="img/{{option.name}}.png" alt="option" /></span>
+            <span><img class="promptPic"  ng-src="img/{{option.name}}.png" alt="option" /></span>
           </div>
         </div>
-        <!-- <div class="again">
-          <button class="round-button animated pulse infinite" ng-if="expectedResult.length === resultLink.length" ng-click="playAgain()">Play Again?</button>
-        </div> -->
 
     </div>
     <div class="basketDiv" ng-show="clickedStatement">
