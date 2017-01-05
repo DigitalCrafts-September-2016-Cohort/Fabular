@@ -59,7 +59,13 @@ img.basket {
   background: rgba(125, 188, 247, 0.7);
   /*background: #3597f2;*/
   width: 700px;
-  margin-top: -10px;
+  /*margin-top: -10px;*/
+
+}
+
+div.wrapper{
+  position: absolute;
+  margin: 100px;
 }
 
 .viewer {
@@ -199,9 +205,11 @@ img.basket {
   transform: translate(256%,88%)}
 
 .app {
-  position: absolute;
-  top: 0;
-  left: 0;
+  /*position: absolute;*/
+  /*top: 0;
+  left: 0;*/
+  top: 15%;
+  left: 22%;
   /*transform: translate(38%, 26%);*/
   /*not sure if needed*/
   width: 60%;
