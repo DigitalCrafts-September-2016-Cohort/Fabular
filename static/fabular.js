@@ -105,178 +105,6 @@ app.controller('fabularController', function($scope, $timeout,$stateParams, $roo
 	};
 
   $scope.Again = function(){
-<<<<<<< HEAD
-        $scope.resultLink = [];
-    fabularService.getThings($scope.category).success(function(data){
-            $scope.currentIndex = 0;
-            //Selects random number through 3 for levels with counting
-        r = (Math.floor(Math.random() * 3) + 1).toString();
-            //Converts random number into an object
-            var r_num = {"name" : r, "wobble" : "false"};
-            //Selects single item from data array using random index number
-        $scope.item = data[Math.floor((Math.random() * 3))];
-            //Builds question array with 'ask' image and $scope.item
-        $scope.questionArray = [ask_obj,$scope.item];
-        //Sets the values of options arrays and expected result arrays depending on level selected:
-        if(chelevel === 1){
-          $scope.optionsArray = data;
-          $scope.expectedResult = [$scope.item];
-        }else if (chelevel === 2){
-          data.unshift(want_obj);
-          $scope.optionsArray = data;
-          $scope.expectedResult = [want_obj, $scope.item];
-          $scope.expectedResult = [want_obj,$scope.item];
-        }else if (chelevel === 3){
-          data.unshift(i_obj,want_obj);
-          $scope.optionsArray = data;
-          // console.log($scope.optionsArray);
-                console.log($scope.resultLink);
-          $scope.expectedResult = [i_obj,want_obj,$scope.item] ;
-        }else if (chelevel === 4){
-          data.unshift(i_obj,want_obj,obj_1,obj_2,obj_3);
-          $scope.questionArray = [ask_obj,r_num,$scope.item];
-          $scope.optionsArray = data;
-          $scope.expectedResult = [i_obj,want_obj,r_num,$scope.item] ;
-        }else if (chelevel === 5){
-                please_obj = {"name" : "please", "wobble" : "false"};
-          data.unshift(i_obj,want_obj,obj_1,obj_2,obj_3);
-          data.push(please_obj);
-          $scope.optionsArray = data;
-          $scope.questionArray = [ask_obj,r_num,$scope.item];
-          $scope.expectedResult = [i_obj,want_obj,r_num,$scope.item,please_obj] ;
-        }
-            $scope.questionArray.forEach(function(value){
-                // textToSpeak(value.name);
-            });
-        });
-    };
-
-		$scope.tutorialStatement = false;
-
-		$scope.tutorial = function(){
-			$scope.tutorialStatement = true;
-			console.log($scope.tutorialStatement);
-
-		// popup
-		if($scope.tutorialStatement === true){
-			var tour = {
-			  id: "hello-hopscotch-a",
-			  steps: [{
-			    title: "Application Menu",
-			    content: "Click here to open and close the appliation menu",
-			    target: "btn-menu",
-			    placement: "bottom",
-					yOffset : 100,
-			    xOffset: 250,
-			    onShow: function() {
-						$(".prompt").removeClass("animated");
-						$(".prompt").addClass("z-one");
-						$(".promptPic").addClass("highLight");
-						// $(".animated").addClass("tourSta");
-						// $(".options").addClass("z-one");
-						// $(".animated").addClass("highLight");
-						// $(".basket").addClass("highLight");
-						// $(".highLight").removeClass("animated");
-
-			      document.getElementById("btn-menu").style.zIndex = 9999999999999;
-						// document.getElementById("entire").style.zIndex = 1;
-						console.log("On 1");
-					},
-			    onNext: function() {
-						$(".prompt").removeClass("highLight");
-						$(".prompt").addClass("animated");
-						$(".prompt").removeClass("z-one");
-			      document.getElementById("btn-menu").style.zIndex = 0;
-						// document.getElementById("entire").style.zIndex = 1;
-						console.log("Off 1");
-			    }
-			  }, {
-			    title: "System Information",
-			    content: "Click here to acces info about the current state of the system",
-			    target: "btn-system",
-			    placement: "bottom",
-			    xOffset: 850,
-					yOffset: 100, // this will set the left - right
-			    arrowOffset: 260,
-			    onShow: function() {
-						$(".menu").addClass("z-one");
-			      document.getElementById("btn-system").style.zIndex = 9999999999999;
-						console.log("On 2");
-			    },
-			    onNext: function() {
-						$(".menu").removeClass("z-one");
-			      document.getElementById("btn-system").style.zIndex = 0;
-						console.log("Off 2");
-			    }
-			  }, {
-			    title: "User Information",
-			    content: "Click here to logout, switch users, and opt out of the beta",
-			    target: "btn-user",
-			    placement: "bottom",
-			    xOffset: 200, // this will set the left - right
-			    yOffset: 400,
-			    arrowOffset: 130,
-			    onShow: function() {
-						$(".options").addClass("highLight");
-						$(".options").addClass("animated");
-						$(".options").addClass("z-one");
-			      document.getElementById("btn-user").style.zIndex = 9999999999999;
-						console.log("On 3");
-			    },
-			    onNext: function() {
-						$(".options").removeClass("highLight");
-						$(".options").addClass("animated");
-						$(".options").removeClass("z-one");
-						document.getElementById("btn-user").style.zIndex = 0;
-						console.log("Off 3");
-			    }
-			  },{
-			    title: "fourth",
-			    content: "fourth here to logout, switch users, and opt out of the beta",
-			    target: "btn-users",
-			    placement: "bottom",
-			    xOffset: 100, // this will set the left - right
-			    yOffset: 500,
-			    arrowOffset: 130,
-			    onShow: function() {
-						$(".basket").addClass("highLight");
-						$(".basket").removeClass("animated");
-						$(".basket").addClass("z-one");
-			      document.getElementById("btn-users").style.zIndex = 9999999999999;
-						console.log("On 4");
-			    },
-			    onNext: function() {
-						// $(".options").addClass("animated");
-			      document.getElementById("btn-users").style.zIndex = 0;
-						console.log("Off 4");
-			    }
-			  }],
-			  onStart: function() {
-			    document.getElementById("mask").className = "mask masked";
-					// $(".animated").removeClass("animated");
-					// $(".animated").addClass("animated");
-
-					console.log("on");
-			  },
-			  onEnd: function() {
-			    document.getElementById("mask").className = "mask";
-					// $(".options").addClass("animated");
-					console.log("off");
-			  }
-			};
-
-			hopscotch.startTour(tour, 0);
-		}
-		};
-    //Click function
-    $scope.clicked = function(option) {
-        //Handles correct click events
-        if (option.name === $scope.expectedResult[$scope.currentIndex].name) {
-            $scope.currentIndex += 1;
-            // textToSpeak(option.name);
-            $scope.resultLink.push(option);
-            if(chelevel === 1 && $scope.currentIndex === 1){
-=======
 		$scope.resultLink = [];
   	fabularService.getThings($scope.category).success(function(data){
 			$scope.currentIndex = 0;
@@ -332,7 +160,6 @@ app.controller('fabularController', function($scope, $timeout,$stateParams, $roo
 			// textToSpeak(option.name);
 			$scope.resultLink.push(option);
 			if(chelevel === 1 && $scope.currentIndex === 1){
->>>>>>> master
         $scope.optionsArray = [];
       }
 			if(chelevel === 2 && $scope.currentIndex === 2){
@@ -401,3 +228,116 @@ app.controller('fabularController', function($scope, $timeout,$stateParams, $roo
 		$scope.Again();
 	};
 });
+
+
+
+
+// popup
+
+var tour = {
+  id: "hello-hopscotch-a",
+  steps: [{
+    title: "Application Menu",
+    content: "Click here to open and close the appliation menu",
+    target: "btn-menu",
+    placement: "bottom",
+		yOffset : 100,
+    xOffset: 250,
+    onShow: function() {
+			$(".prompt").removeClass("animated");
+			$(".prompt").addClass("z-one");
+			$(".promptPic").addClass("highLight");
+			// $(".animated").addClass("tourSta");
+			// $(".options").addClass("z-one");
+			// $(".animated").addClass("highLight");
+			// $(".basket").addClass("highLight");
+			// $(".highLight").removeClass("animated");
+
+      document.getElementById("btn-menu").style.zIndex = 9999999999999;
+			// document.getElementById("entire").style.zIndex = 1;
+			console.log("On 1");
+		},
+    onNext: function() {
+			$(".prompt").removeClass("highLight");
+			$(".prompt").addClass("animated");
+			$(".prompt").removeClass("z-one");
+      document.getElementById("btn-menu").style.zIndex = 0;
+			// document.getElementById("entire").style.zIndex = 1;
+			console.log("Off 1");
+    }
+  }, {
+    title: "System Information",
+    content: "Click here to acces info about the current state of the system",
+    target: "btn-system",
+    placement: "bottom",
+    xOffset: 850,
+		yOffset: 100, // this will set the left - right
+    arrowOffset: 260,
+    onShow: function() {
+			$(".menu").addClass("z-one");
+      document.getElementById("btn-system").style.zIndex = 9999999999999;
+			console.log("On 2");
+    },
+    onNext: function() {
+			$(".menu").removeClass("z-one");
+      document.getElementById("btn-system").style.zIndex = 0;
+			console.log("Off 2");
+    }
+  }, {
+    title: "User Information",
+    content: "Click here to logout, switch users, and opt out of the beta",
+    target: "btn-user",
+    placement: "bottom",
+    xOffset: 200, // this will set the left - right
+    yOffset: 400,
+    arrowOffset: 130,
+    onShow: function() {
+			$(".options").addClass("highLight");
+			$(".options").addClass("animated");
+			$(".options").addClass("z-one");
+      document.getElementById("btn-user").style.zIndex = 9999999999999;
+			console.log("On 3");
+    },
+    onNext: function() {
+			$(".options").removeClass("highLight");
+			$(".options").addClass("animated");
+			$(".options").removeClass("z-one");
+			document.getElementById("btn-user").style.zIndex = 0;
+			console.log("Off 3");
+    }
+  },{
+    title: "fourth",
+    content: "fourth here to logout, switch users, and opt out of the beta",
+    target: "btn-users",
+    placement: "bottom",
+    xOffset: 100, // this will set the left - right
+    yOffset: 500,
+    arrowOffset: 130,
+    onShow: function() {
+			$(".basket").addClass("highLight");
+			$(".basket").removeClass("animated");
+			$(".basket").addClass("z-one");
+      document.getElementById("btn-users").style.zIndex = 9999999999999;
+			console.log("On 4");
+    },
+    onNext: function() {
+			// $(".options").addClass("animated");
+      document.getElementById("btn-users").style.zIndex = 0;
+			console.log("Off 4");
+    }
+  }],
+  onStart: function() {
+    document.getElementById("mask").className = "mask masked";
+		// $(".animated").removeClass("animated");
+		// $(".animated").addClass("animated");
+
+		console.log("on");
+  },
+  onEnd: function() {
+    document.getElementById("mask").className = "mask";
+		// $(".options").addClass("animated");
+		console.log("off");
+  }
+};
+
+hopscotch.startTour(tour, 0);
