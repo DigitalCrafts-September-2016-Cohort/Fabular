@@ -4,10 +4,6 @@ body {
   background-size: cover;
   overflow: hidden;
   background-repeat: no-repeat;
-<<<<<<< HEAD
-=======
-  overflow: hidden;
->>>>>>> master
 }
 
 main{
@@ -215,9 +211,9 @@ div.wrapper{
   position: absolute;
   /*top: 15%;
   left: 22%;*/
-  top: 0;
-  left: 0;
-  transform: translate(38%, 12%);
+  top: 15%;
+  left: 42%;
+  /*transform: translate(38%, 12%);*/
   /*not sure if needed*/
   width: 60%;
 }
