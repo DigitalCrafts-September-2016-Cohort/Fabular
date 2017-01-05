@@ -105,7 +105,7 @@ div.wrapper{
   justify-content: center;
   /*background-color: #ffb2ff;*/
   /*border: 2px solid #ffb2ff;*/
-  padding: 20px;
+  padding: 40px;
   margin-top: 5px;
   margin-bottom: 5px;
 }
@@ -213,7 +213,7 @@ div.wrapper{
   position: absolute;
   /*top: 15%;
   left: 22%;*/
-  top: -20%;
+  top: -65%;
   left: 182%;
   /*transform: translate(38%, 12%);*/
   /*not sure if needed*/
