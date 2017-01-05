@@ -162,7 +162,7 @@ app.controller('fabularController', function($scope, $timeout,$stateParams, $roo
 					$scope.optionsArray = [];
         }
 				//Split levels because of splice in 153
-				if((chelevel === 4 && $scope.currentIndex === 3) || (chelevel === 5 && $scope.currentIndex === 4)){
+				if((chelevel === 4 || chelevel === 5) && ($scope.currentIndex === 3 || $scope.currentIndex === 4)){
 					$scope.optionsArray.splice(0,3);
 				}
         if(chelevel === 5 && $scope.currentIndex === 5){

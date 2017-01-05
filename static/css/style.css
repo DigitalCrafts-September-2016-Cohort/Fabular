@@ -3,7 +3,7 @@ body {
   background-image: url("rainbowbg.jpg");
   background-size: cover;
   background-repeat: no-repeat;
-  /*overflow: hidden;*/
+  overflow: hidden;
 }
 
 img {
@@ -198,6 +198,8 @@ img.basket {
 
 .app {
   position: absolute;
+  /*top: 15%;
+  left: 22%;*/
   top: 0;
   left: 0;
   transform: translate(38%, 12%);
@@ -226,13 +228,6 @@ img.basket {
   font-size: 20px;
 }
 
-.more {
-  position: absolute;
-  top: 21%;
-  left: 25%;
-  height: 60px;
-}
-
 .basket2 {
   border: 4px solid pink;
   /*display: flex;*/
@@ -255,12 +250,22 @@ img.basket {
   position: absolute;
   top: 0;
   left: 0;
-  transform: translate(158%,151%);
+  transform: translate(75%,43%);
 }
 
 img.mole {
-  height: 200px;
+  height: 400px;
 }
+
+img.more {
+  position: absolute;
+  top: 56%;
+  left: 23%;
+  height: 60px;
+  transform: skew(-4deg, 1deg);
+}
+
+
 /*.mas {
   position: absolute;
   top: 0;
