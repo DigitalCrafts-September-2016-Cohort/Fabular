@@ -3,7 +3,7 @@ body {
   background-image: url("rainbowbg.jpg");
   background-size: cover;
   background-repeat: no-repeat;
-  overflow: hidden;
+  /*overflow: hidden;*/
 }
 
 img {
@@ -259,10 +259,10 @@ img.mole {
 
 img.more {
   position: absolute;
-  top: 56%;
-  left: 23%;
+  top: 54%;
+  left: 24%;
   height: 60px;
-  transform: skew(-4deg, 1deg);
+  transform: rotate(-12deg);
 }
 
 
