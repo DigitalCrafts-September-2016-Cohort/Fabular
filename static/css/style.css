@@ -211,8 +211,8 @@ div.wrapper{
   position: absolute;
   /*top: 15%;
   left: 22%;*/
-  top: 15%;
-  left: 42%;
+  top: 30px;
+  left: 62px;
   /*transform: translate(38%, 12%);*/
   /*not sure if needed*/
   width: 60%;
