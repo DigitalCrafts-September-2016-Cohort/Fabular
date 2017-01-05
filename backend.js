@@ -23,14 +23,15 @@ const Cards = mongoose.model('card',{
 
 
 app.get('/things/:category',function(request,response){
- var category = request.params.category || 'fruits';
- Cards.find({ category : category})
- .then(function(obj){
-   response.send(_.shuffle(obj[0].items).slice(0,3));
-   })
- .catch(function(err){
-   console.log(err.stash);
- });
+  var category = request.params.category;
+  Cards.find({ category : category})
+  .then(function(data){
+    console.log(data);
+    response.send(_.shuffle(data[0].items).slice(0,3));
+  })
+  .catch(function(err){
+    console.log(err.stash);
+  });
 });
 
 
