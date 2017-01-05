@@ -2,10 +2,14 @@ body {
   /*background-color: #c5e1fb;*/
   background-image: url("rainbowbg.jpg");
   background-size: cover;
-  background-repeat: no-repeat;
   overflow: hidden;
+  background-repeat: no-repeat;
 }
 
+main{
+  height: 100px;
+  width: 100px;
+}
 img {
   height: 100px;
   margin: 20px;
@@ -55,7 +59,13 @@ img.basket {
   background: rgba(125, 188, 247, 0.7);
   /*background: #3597f2;*/
   width: 700px;
-  margin-top: -10px;
+  /*margin-top: -10px;*/
+
+}
+
+div.wrapper{
+  position: absolute;
+  margin: 100px;
 }
 
 .viewer {
@@ -116,6 +126,7 @@ img.basket {
   padding: 25px;
   margin-top: 10px;
   margin-bottom: 10px;
+  position: relative;
   text-align: center;
 }
 .options > div {
@@ -200,12 +211,13 @@ img.basket {
   position: absolute;
   /*top: 15%;
   left: 22%;*/
-  top: 0;
-  left: 0;
-  transform: translate(38%, 12%);
+  top: 15%;
+  left: 42%;
+  /*transform: translate(38%, 12%);*/
   /*not sure if needed*/
   width: 60%;
 }
+
 
 /*.signPost {
   position: absolute;
@@ -246,6 +258,107 @@ img.basket {
   transform: translate(1080%,-14%);
 }
 
+/*
+.intro{
+  width: 100px;
+  height: 100px;
+}*/
+
+
+.glyphicon {
+  font-size: 20px;
+}
+
+.display-inline {
+  display: inline-block;
+}
+
+div.hopscotch-bubble .hopscotch-bubble-content {
+  margin-left: 0;
+}
+
+.mask {
+  position: fixed;
+  /*top: 0;
+  bottom: 0;
+  left: 0;
+  right: 0;*/
+  /*transition: background-color 350ms ease;*/
+  /*background-color: rgba(0, 0, 0, 1);*/
+}
+
+.masked {
+  top: 0;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  background-color: rgba(0, 0, 0, 0.65);
+}
+
+div.hopscotch-bubble .hopscotch-content,
+div.hopscotch-bubble h3 {
+  font-weight: 300;
+  color: #2b2e30;
+}
+
+div.hopscotch-bubble .hopscotch-content {
+  opacity: 0.6;
+}
+
+div.hopscotch-bubble {
+  border: 2px solid #6699CC;
+}
+
+div.hopscotch-bubble .hopscotch-bubble-arrow-container.up .hopscotch-bubble-arrow-border {
+  border-bottom: 17px solid black;
+  opacity: 0.5;
+  border-left: 20px solid transparent;
+  border-right: 20px solid transparent;
+}
+
+div.hopscotch-bubble .hopscotch-bubble-arrow-container.up .hopscotch-bubble-arrow {
+  top: -15px;
+}
+
+div.hopscotch-bubble .hopscotch-bubble-arrow-container.up {
+  top: -18px;
+}
+
+div.hopscotch-bubble .hopscotch-nav-button.next:hover,
+div.hopscotch-bubble .hopscotch-nav-button.next {
+  background-image: none;
+  background-color: #6699CC;
+  font-weight: normal;
+  text-shadow: none;
+  color: #fff;
+  border: none;
+  border-radius: 0;
+}
+
+div.hopscotch-bubble .hopscotch-bubble-close {
+  opacity: 0.25;
+}
+
+div.hopscotch-bubble .hopscotch-bubble-close:hover {
+  opacity: 0.7;
+}
+
+div.hopscotch-bubble,
+div.hopscotch-bubble * {
+  box-sizing: content-box;
+}
+
+
+.takeOff{
+  position: absolute;
+  background-color: rgba(255,255,255,0.1);
+}
+
+.over{
+  background-color: rgba(255, 255, 255, 0.5);
+  display: inline-block;
+}
+
 .otra {
   position: absolute;
   top: 0;
@@ -272,3 +385,28 @@ img.more {
   left: 0;
   transform: translate(0%, 0%);
 }*/
+
+/*.options > div {
+  z-index: 60000;
+  position: relative;
+}*/
+
+.highLight{
+  z-index: 60000;
+  position: relative;
+}
+
+.z-one{
+  position: relative;
+  z-index: 1;
+}
+
+.z-two{
+  position: relative;
+  z-index: 2;
+}
+
+.z-min{
+  position: relative;
+  z-index: -2;
+}
