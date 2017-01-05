@@ -120,6 +120,7 @@ img.basket {
   padding: 25px;
   margin-top: 10px;
   margin-bottom: 10px;
+  position: relative;
 }
 
 .promptPic {
@@ -201,7 +202,7 @@ img.basket {
   position: absolute;
   top: 0;
   left: 0;
-  transform: translate(38%, 26%);
+  /*transform: translate(38%, 26%);*/
   /*not sure if needed*/
   width: 60%;
 }
@@ -274,15 +275,19 @@ div.hopscotch-bubble .hopscotch-bubble-content {
 
 .mask {
   position: fixed;
-  top: 0;
+  /*top: 0;
   bottom: 0;
   left: 0;
-  right: 0;
-  transition: background-color 350ms ease;
+  right: 0;*/
+  /*transition: background-color 350ms ease;*/
   /*background-color: rgba(0, 0, 0, 1);*/
 }
 
 .masked {
+  top: 0;
+  bottom: 0;
+  left: 0;
+  right: 0;
   background-color: rgba(0, 0, 0, 0.65);
 }
 
@@ -366,3 +371,28 @@ img.mole {
   left: 0;
   transform: translate(0%, 0%);
 }*/
+
+/*.options > div {
+  z-index: 60000;
+  position: relative;
+}*/
+
+.highLight{
+  z-index: 60000;
+  position: relative;
+}
+
+.z-one{
+  position: relative;
+  z-index: 1;
+}
+
+.z-two{
+  position: relative;
+  z-index: 2;
+}
+
+.z-min{
+  position: relative;
+  z-index: -2;
+}
