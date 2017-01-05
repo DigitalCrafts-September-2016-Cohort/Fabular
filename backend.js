@@ -22,15 +22,15 @@ const Cards = mongoose.model('card',{
 });
 
 
-app.get('/things',function(request,response){
-  // var theLevel = request.params.level;
-Cards.find()
-  .then(function(obj){
-    response.send(_.shuffle(obj[0].items).slice(0,3));
-    })
-    .catch(function(err){
-      console.log(err.stash);
-    });
+app.get('/things/:category',function(request,response){
+ var category = request.params.category || 'fruits';
+ Cards.find({ category : category})
+ .then(function(obj){
+   response.send(_.shuffle(obj[0].items).slice(0,3));
+   })
+ .catch(function(err){
+   console.log(err.stash);
+ });
 });
 
 
