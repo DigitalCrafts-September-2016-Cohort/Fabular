@@ -258,3 +258,4 @@ app.controller('fabularController', function($scope, $timeout,$stateParams, $roo
 			hopscotch.startTour(tour, 0);
 		}
 	};
+});
