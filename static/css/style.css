@@ -417,7 +417,4 @@ img.more {
 .z-min{
   position: relative;
   z-index: -2;
-
-.settings {
-  text-align: center;
 }
