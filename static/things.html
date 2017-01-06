@@ -1,18 +1,18 @@
 <div>
-     <span id="btn-menu" class="takeOff"></span>
-     <span id="btn-system" class=""></span>
-     <span id="btn-user" class=""></span>
-     <span id="btn-users" class=""></span>
+      <span id="btn-menu" class="takeOff"></span>
+      <span id="btn-system" class=""></span>
+      <span id="btn-user" class=""></span>
+      <span id="btn-users" class=""></span>
 </div>
-
 <div class="app">
 
-  <!-- Game -->
-  <div class="wrapper">
-    <div class="viewer" ng-show="clickedStatement === false">
-        <div class="prompt animated slideInLeft">
-          <div ng-repeat = "question in questionArray">
-            <span><img class="promptPic"  ng-src="img/{{question.name}}.png" alt="ask for" /></span>
+    <!-- Game -->
+    <div class="wrapper">
+      <div class="viewer" ng-show="clickedStatement === false">
+          <div class="prompt animated slideInLeft">
+            <div ng-repeat = "question in questionArray">
+              <span><img class="promptPic"  ng-src="img/{{question.name}}.png" alt="ask for" /></span>
+            </div>
           </div>
         </div>
         <div class="chainUrl">
@@ -33,8 +33,6 @@
     </div>
     <!-- Settings -->
 
-
-</div>
 </div>
 <div class="signPost">
   <img src="img/sign.png" alt="sign" class="sign" />
@@ -61,29 +59,27 @@
          <button type="button" class="close" data-dismiss="modal">&times;</button>
          <img class="modal-title" src="img/fabulari_t1.png" alt="logo" />
        </div>
-       <div class="modal-body">
-         <h1>Levels</h1>
-         <div ng-init="levelChange(1)">
-             <button type="button" name="1" ng-click="levelChange(1)" class="level">1</button>
-             <button type="button" name="2" ng-click="levelChange(2)" class="level">2</button>
-             <button type="button" name="3" ng-click="levelChange(3)" class="level">3</button>
-             <button type="button" name="4" ng-click="levelChange(4)" class="level">4</button>
-             <button type="button" name="5" ng-click="levelChange(5)" class="level">5</button>
-         </div>
-
+         <div class="modal-body">
+           <h1>Levels</h1>
+           <div ng-init="levelChange(1)">
+               <button type="button" name="1" ng-click="levelChange(1)" class="level">1</button>
+               <button type="button" name="2" ng-click="levelChange(2)" class="level">2</button>
+               <button type="button" name="3" ng-click="levelChange(3)" class="level">3</button>
+               <button type="button" name="4" ng-click="levelChange(4)" class="level">4</button>
+               <button type="button" name="5" ng-click="levelChange(5)" class="level">5</button>
+           </div>
          <h1>Categories</h1>
          <div>
            <button class="btn btn-primary" type="button" ng-click="setCategory('fruits')">Fruits</button>
            <button class="btn btn-primary" type="button" ng-click="setCategory('animals')">Animals</button>
            <button class="btn btn-primary" type="button" ng-click="setCategory('toys')">Toys</button>
          </div>
+           <h1>About</h1>
+         </div>
+         <div class="modal-footer">
+           <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+         </div>
+       </div>
 
-         <h1>About</h1>
-       </div>
-       <div class="modal-footer">
-         <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
-       </div>
      </div>
-
    </div>
- </div>
