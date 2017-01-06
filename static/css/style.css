@@ -207,14 +207,17 @@ div.wrapper{
   position: absolute;
   top: 0;
   left: 0;
-  transform: translate(287%,101%)}
+  transform: translate(287%,101%);
+  /*transform: translate(218%,121%);*/
+}
 
 .app {
   position: absolute;
   /*top: 15%;
   left: 22%;*/
   top: -65%;
-  left: 182%;
+  /*left: 182%;*/
+  left: 190%;
   /*transform: translate(38%, 12%);*/
   /*not sure if needed*/
   width: 60%;
@@ -392,7 +395,7 @@ img.more {
   transform: rotate(-12deg);
 }
 
-.tutorialBtn {
+/*.tutorialBtn {
   background: #5BAA38;
   background-image: -webkit-linear-gradient(top, #5BAA38, #89C633);
   background-image: -moz-linear-gradient(top, #5BAA38, #89C633);
@@ -417,6 +420,13 @@ img.more {
   background: #9cdb37;
   color: #fff;
   text-decoration: none;
+}*/
+img.tutorialButton {
+  height: 45%;
+  position: absolute;
+  top: 0;
+  left: 0;
+  transform: translate(588%,200%);
 }
 
 .basket2 h1 {
@@ -462,3 +472,24 @@ img.more {
 .z-min{
   position: relative;
   z-index: -2;
+}
+
+/*For horizontal iPad*/
+@media screen and (max-width: 1024px) {
+  .sign {
+    transform: translate(218%,121%);
+  }
+  img.logo {
+    transform: translate(332%, 445%) skew(-4deg, 1deg);
+  }
+  .app {
+    left: 72%;
+  }
+  .menu {
+    transform: translate(880%,-14%);
+  }
+  img.tutorialButton {
+    height: 40%;
+    transform: translate(538%,200%);
+  }
+}
