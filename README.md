@@ -15,7 +15,7 @@ Add overview
 
 
 ### Github Link
-###### [Beer App](http://...)
+###### [Fabular](http://...)
 
 
 ### Team Members
@@ -76,22 +76,29 @@ Beer App is .... Many writers struggle to write sentences of appropriate length.
 ### Code examples
 ##### Javascript highlight
 ```JavaScript
-function test() {
-  consol.log("Add the example in here");
-}
-
-function test2() {
-
+//
+$scope.numberResult = Math.floor(Math.random() * 3) + 1;
+$scope.item = data[Math.floor((Math.random() * 3))];
+// 
+else if (chelevel === 3){
+  data.unshift(i_obj,want_obj);
+  $scope.optionsArray = data;
+  console.log($scope.optionsArray);
+  $scope.expectedResult = [i_obj,want_obj,$scope.item] ;
 }
 ```
 
-##### Python highlight
-```Python
-def test():
-  print "Add python code here"
-
-def test2():
-  print "add it here"
+##### Backend.JS Basic Schema
+```JavaScript
+const Cards = mongoose.model('card',{
+  category : String,
+  items : [
+    {
+      name : String,
+      wobble : String
+    }
+  ]
+});
 ```
 
 ### Screenshots
@@ -106,6 +113,6 @@ def test2():
 
 
 ### Project History
-11/29/2016 - Project Start
+12/19/2016 - Project Start
 
-12/02/2016 - Project Completion and Deployment
+01/07/2017 - Project Completion and Deployment

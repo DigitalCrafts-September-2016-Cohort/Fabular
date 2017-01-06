@@ -1,50 +1,88 @@
-<div class="playAgain">
-  <img class="cloud animated slideInLeft" ng-if="expectedResult.length === resultLink.length" ng-click="playAgain()" src="images/cloud.png" alt="cloud" />
+<div>
+     <span id="btn-menu" class="takeOff"></span>
+     <span id="btn-system" class=""></span>
+     <span id="btn-user" class=""></span>
+     <span id="btn-users" class=""></span>
 </div>
-</div>
+
 <div class="app">
-  <div class="logoDiv">
-    <div ng-init="levelChange(1)">
-        <button type="button" name="1" ng-click="levelChange(1)" class="level">1</button>
-        <button type="button" name="2" ng-click="levelChange(2)" class="level">2</button>
-        <button type="button" name="3" ng-click="levelChange(3)" class="level">3</button>
-        <button type="button" name="4" ng-click="levelChange(4)" class="level">4</button>
-        <button type="button" name="5" ng-click="levelChange(5)" class="level">5</button>
-    </div>
-    <!-- <img class="logo" src="images/fabulari_t1.png" alt="logo" /> -->
-    <div class="nav">
-      <!-- <a ui-sref="settings">settings</a> -->
-      <img class="basket" src="images/basket.png" alt="basket" ng-click="clickedBasket()" />
-    </div>
-  </div>
+
+  <!-- Game -->
   <div class="wrapper">
     <div class="viewer" ng-show="clickedStatement === false">
         <div class="prompt animated slideInLeft">
           <div ng-repeat = "question in questionArray">
-            <span><img class="promptPic" ng-src="images/{{question.name}}.png" alt="ask for" /></span>
+            <span><img class="promptPic"  ng-src="img/{{question.name}}.png" alt="ask for" /></span>
           </div>
         </div>
         <div class="chainUrl">
-          <span ng-repeat="result in resultLink"><img class="chainPic" ng-src="images/{{result.name}}.png"/></span>
+          <span ng-repeat="result in resultLink"><img class="chainPic"  ng-src="img/{{result.name}}.png"/></span>
         </div>
         <div class="options animated slideInRight">
           <div ng-repeat="option in optionsArray" ng-class="{ 'animated wobble error' : option.wobble === true }" ng-click="clicked(option)">
-            <span><img class="promptPic" ng-src="images/{{option.name}}.png" alt="option" /></span>
+            <span><img class="promptPic"  ng-src="img/{{option.name}}.png" alt="option" /></span>
           </div>
         </div>
-        <!-- <div class="again">
-          <button class="round-button animated pulse infinite" ng-if="expectedResult.length === resultLink.length" ng-click="playAgain()">Play Again?</button>
-        </div> -->
+    </div>
+    <div class="basketDiv" ng-show="clickedStatement">
+      <div class="basket2">
+        <h1>My Basket</h1>
+        <img ng-repeat="item in basket track by $index" ng-src="img/{{item}}.png" alt="item" />
 
-      <div class="basket viewer" ng-show="clickedStatement === true">
-        <h1>Basket</h1>
-        <div ng-repeat = "item in basket track by $index">
-          <span><img ng-src="images/{{item}}.png" alt="item" /></span>
-        </div>
       </div>
     </div>
+    <!-- Settings -->
+
+
+</div>
 </div>
 <div class="signPost">
-  <img src="images/sign.png" alt="sign" class="sign" />
-  <img src="images/fabulari_t1.png" alt="logo" class="logo"/>
+  <img src="img/sign.png" alt="sign" class="sign" />
+  <img src="img/fabulari_t1.png" alt="logo" class="logo"/>
 </div>
+<img class="basket" src="img/basket.png" alt="basket" ng-click="clickedBasket()" />
+<div class="otra">
+  <img class="mole animated bounceInUp" ng-if="expectedResult.length === resultLink.length" ng-click="playAgain()" src="img/mole1.png" alt="mole" />
+  <img class="more animated pulse infinite" ng-if="expectedResult.length === resultLink.length" ng-click="playAgain()" src="img/more.png" alt="more" />
+</div>
+
+
+ <img class="menu" data-toggle="modal" data-target="#myModal" src="img/menu.png" alt="gear menu" />
+
+<button class="btn" type="button" name="button" ng-click="tutorial()">Tutorial</button>
+ <!-- Modal -->
+ <div class="modal fade" id="myModal" role="dialog">
+   <div class="modal-dialog">
+
+     <!-- Modal content-->
+     <div class="modal-content">
+       <div class="modal-header">
+         <button type="button" class="close" data-dismiss="modal">&times;</button>
+         <img class="modal-title" src="img/fabulari_t1.png" alt="logo" />
+       </div>
+       <div class="modal-body">
+         <h1>Levels</h1>
+         <div ng-init="levelChange(1)">
+             <button type="button" name="1" ng-click="levelChange(1)" class="level">1</button>
+             <button type="button" name="2" ng-click="levelChange(2)" class="level">2</button>
+             <button type="button" name="3" ng-click="levelChange(3)" class="level">3</button>
+             <button type="button" name="4" ng-click="levelChange(4)" class="level">4</button>
+             <button type="button" name="5" ng-click="levelChange(5)" class="level">5</button>
+         </div>
+
+         <h1>Categories</h1>
+         <div>
+           <button type="button" ng-click="setCategory('fruits')">Fruits</button>
+           <button type="button" ng-click="setCategory('animals')">Animals</button>
+           <button type="button" ng-click="setCategory('toys')">Toys</button>
+         </div>
+
+         <h1>About</h1>
+       </div>
+       <div class="modal-footer">
+         <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+       </div>
+     </div>
+
+   </div>
+ </div>

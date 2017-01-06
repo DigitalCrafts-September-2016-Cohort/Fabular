@@ -1,12 +1,18 @@
 body {
   /*background-color: #c5e1fb;*/
-  background-image: url("http://spinningtop.com.au/wp-content/uploads/2015/10/url.jpg");
+  background-image: url("rainbowbg.jpg");
   background-size: cover;
-  overflow: hidden;
+  background-repeat: no-repeat;
+  /*overflow: hidden;*/
 }
 
+main{
+  height: 100px;
+  width: 100px;
+}
 img {
-  height: 80px;
+  height: 100px;
+  margin: 20px;
 }
 
 button {
@@ -20,11 +26,16 @@ img.logo {
   position: absolute;
   top: 0;
   left: 0;
-  transform: translate(273%, 313%) skew(-4deg, 1deg);
+  transform: translate(431%, 389%) skew(-4deg, 1deg);
 }
 
 img.basket {
-  height: 100px;
+  height: 170px;
+  position: absolute;
+  top: 0;
+  left: 0;
+  transform: translate(31%, 245%);
+
 }
 
 .nav {
@@ -44,12 +55,17 @@ img.basket {
 
 .wrapper {
   border: 5px solid #244DA9;
-  border-radius: 0 0 120px 120px;
-  border-top: none;
+  border-radius: 120px 120px 120px 120px;
   background: rgba(125, 188, 247, 0.7);
   /*background: #3597f2;*/
   width: 700px;
-  margin-top: -10px;
+  /*margin-top: -10px;*/
+
+}
+
+div.wrapper{
+  position: absolute;
+  margin: 100px;
 }
 
 .viewer {
@@ -65,8 +81,11 @@ img.basket {
 }
 
 .error{
-  border: 4px solid red; /*border is messing up spacing */
-  border-radius: 10px;
+  background:
+   linear-gradient(
+     rgba(255, 0, 0, 0.7),
+     rgba(255, 0, 0, 0.7)
+   )
 }
 
 .board {
@@ -86,7 +105,7 @@ img.basket {
   justify-content: center;
   /*background-color: #ffb2ff;*/
   /*border: 2px solid #ffb2ff;*/
-  padding: 20px;
+  padding: 40px;
   margin-top: 5px;
   margin-bottom: 5px;
 }
@@ -99,16 +118,20 @@ img.basket {
 }
 
 .options {
-  height: 50px;
-  display: flex;
+  /*height: 50px;*/
+  /*display: flex;
   align-items: center;
-  justify-content: center;
+  justify-content: center;*/
   /*border: 2px solid blue;*/
   padding: 25px;
   margin-top: 10px;
   margin-bottom: 10px;
+  position: relative;
+  text-align: center;
 }
-
+.options > div {
+  display: inline-block;
+}
 .promptPic {
   /*border: 4px outset transparent;*/
   border-radius: 10px;
@@ -128,11 +151,11 @@ img.basket {
    float: right;
  }
 
- .again {
+ /*.again {
    display: flex;
    align-items: center;
    justify-content: center;
- }
+ }*/
 
  .round-button {
    display: block;
@@ -152,8 +175,11 @@ img.basket {
 .round-button:hover {
     background: #0d255a;
 }
-.basket {
+.basketDiv {
   height: 400px;
+  display: inline-block;
+
+  /*border: 4px solid red;*/
 }
 .level {
   width: 35px;
@@ -181,17 +207,18 @@ img.basket {
   position: absolute;
   top: 0;
   left: 0;
-  transform: translate(178%,75%);
-}
+  transform: translate(287%,101%)}
 
 .app {
   position: absolute;
+
   top: 0;
   left: 0;
   transform: translate(38%, 26%);
   /*not sure if needed*/
   width: 60%;
 }
+
 
 /*.signPost {
   position: absolute;
@@ -200,7 +227,221 @@ img.basket {
   transform: translate(249%, 100%);
 }*/
 
-/*.cloud {
-  width: 300px;
-  height: 300px;
+.cloud {
+  /*width: 30%;
+  height: 30%;
+  position: absolute;
+  top: 0;
+  left: 0;
+  transform: translate(10%, 10%);*/
+}
+
+.againWords {
+  font-family: 'Nunito Sans', sans-serif;
+  font-size: 20px;
+}
+
+.settings {
+text-align: center;
+}
+
+.basket2 {
+  /*border: 4px solid pink;*/
+  /*display: flex;*/
+  /*justify-content: center;
+  align-content: center;*/
+  margin-top: 4%;
+  overflow: scroll;
+  /*width: 80%;*/
+  text-align: center;
+}
+
+/*gear menu*/
+.menu {
+  position: absolute;
+  top: 0;
+  left: 0;
+  transform: translate(1080%,-14%);
+}
+
+/*
+.intro{
+  width: 100px;
+  height: 100px;
 }*/
+.modal {
+  /*width: 20%;*/
+  text-align: center;
+}
+
+.glyphicon {
+  font-size: 20px;
+}
+
+.display-inline {
+  display: inline-block;
+}
+
+div.hopscotch-bubble .hopscotch-bubble-content {
+  margin-left: 0;
+}
+
+.mask {
+  position: fixed;
+  /*top: 0;
+  bottom: 0;
+  left: 0;
+  right: 0;*/
+  /*transition: background-color 350ms ease;*/
+  /*background-color: rgba(0, 0, 0, 1);*/
+}
+
+.masked {
+  top: 0;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  background-color: rgba(0, 0, 0, 0.65);
+}
+
+div.hopscotch-bubble .hopscotch-content,
+div.hopscotch-bubble h3 {
+  font-weight: 300;
+  color: #2b2e30;
+}
+
+div.hopscotch-bubble .hopscotch-content {
+  opacity: 0.6;
+}
+
+div.hopscotch-bubble {
+  border: 2px solid #6699CC;
+}
+
+div.hopscotch-bubble .hopscotch-bubble-arrow-container.up .hopscotch-bubble-arrow-border {
+  border-bottom: 17px solid black;
+  opacity: 0.5;
+  border-left: 20px solid transparent;
+  border-right: 20px solid transparent;
+}
+
+div.hopscotch-bubble .hopscotch-bubble-arrow-container.up .hopscotch-bubble-arrow {
+  top: -15px;
+}
+
+div.hopscotch-bubble .hopscotch-bubble-arrow-container.up {
+  top: -18px;
+}
+
+div.hopscotch-bubble .hopscotch-nav-button.next:hover,
+div.hopscotch-bubble .hopscotch-nav-button.next {
+  background-image: none;
+  background-color: #6699CC;
+  font-weight: normal;
+  text-shadow: none;
+  color: #fff;
+  border: none;
+  border-radius: 0;
+}
+
+div.hopscotch-bubble .hopscotch-bubble-close {
+  opacity: 0.25;
+}
+
+div.hopscotch-bubble .hopscotch-bubble-close:hover {
+  opacity: 0.7;
+}
+
+div.hopscotch-bubble,
+div.hopscotch-bubble * {
+  box-sizing: content-box;
+}
+
+
+.takeOff{
+  position: absolute;
+  background-color: rgba(255,255,255,0.1);
+}
+
+.over{
+  background-color: rgba(255, 255, 255, 0.5);
+  display: inline-block;
+}
+
+.otra {
+  position: absolute;
+  top: 0;
+  left: 0;
+  transform: translate(75%,43%);
+}
+
+img.mole {
+  height: 400px;
+}
+
+img.more {
+  position: absolute;
+  top: 54%;
+  left: 24%;
+  height: 60px;
+  transform: rotate(-12deg);
+}
+
+.btn {
+  background: #5BAA38;
+  background-image: -webkit-linear-gradient(top, #5BAA38, #89C633);
+  background-image: -moz-linear-gradient(top, #5BAA38, #89C633);
+  background-image: -ms-linear-gradient(top, #5BAA38, #89C633);
+  background-image: -o-linear-gradient(top, #5BAA38, #89C633);
+  background-image: linear-gradient(to bottom, #5BAA38, #89C633);
+  -webkit-border-radius: 28;
+  -moz-border-radius: 28;
+  border-radius: 28px;
+  font-family: Arial;
+  color: #ffffff;
+  font-size: 20px;
+  padding: 10px 20px 10px 20px;
+  text-decoration: none;
+  position: absolute;
+  top: 0;
+  left: 0;
+  transform: translate(1018%,202%);
+}
+
+.btn:hover {
+  background: #9cdb37;
+  text-decoration: none;
+}
+
+
+
+/*.mas {
+  position: absolute;
+  top: 0;
+  left: 0;
+  transform: translate(0%, 0%);
+}*/
+
+/*.options > div {
+  z-index: 60000;
+  position: relative;
+}*/
+
+.highLight{
+  z-index: 60000;
+  position: relative;
+}
+
+.z-one{
+  position: relative;
+  z-index: 1;
+}
+
+.z-two{
+  position: relative;
+  z-index: 2;
+}
+
+.z-min{
+  position: relative;
+  z-index: -2;
