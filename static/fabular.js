@@ -151,7 +151,103 @@ app.controller('fabularController', function($scope, $timeout,$stateParams, $roo
 			});
 		});
 	};
+	// popup tutorial
+		$scope.tutorStatement = false;
+		$scope.tutorial = function() {
+			$scope.tutorStatement = true;
+			if($scope.tutorStatement === true) {
+				var tour = {
+				  id: "hello-hopscotch-a",
+				  steps: [{
+				    title: "Prompt",
+				    content: "The student is given a prompt in order to request an item",
+				    target: "btn-menu",
+				    placement: "left",
+						yOffset : 100,
+				    xOffset: 480,
+				    onShow: function() {
+							$(".prompt").removeClass("animated");
+							$(".prompt").addClass("z-one");
+							$(".promptPic").addClass("highLight");
+				      document.getElementById("btn-menu").style.zIndex = 9999999999999;
+							// document.getElementById("entire").style.zIndex = 1;
+							console.log("On 1");
+						},
+				    onNext: function() {
+							$(".prompt").removeClass("highLight");
+							$(".prompt").addClass("animated");
+							$(".prompt").removeClass("z-one");
+				      document.getElementById("btn-menu").style.zIndex = 0;
+							// document.getElementById("entire").style.zIndex = 1;
+							console.log("Off 1");
+				    }
+				  }, {
+				    title: "Options",
+				    content: "The field of options is provided with immediate error correction upon a wrong selection",
+				    target: "btn-user",
+				    placement: "bottom",
+				    xOffset: 450, // this will set the left - right
+				    yOffset: 450,
+				    arrowOffset: 130,
+				    onShow: function() {
+							$(".options").addClass("highLight");
+							$(".options").addClass("animated");
+							$(".options").addClass("z-one");
+				      document.getElementById("btn-user").style.zIndex = 9999999999999;
+							console.log("On 3");
+				    },
+				    onNext: function() {
+							$(".options").removeClass("highLight");
+							$(".options").addClass("animated");
+							$(".options").removeClass("z-one");
+							document.getElementById("btn-user").style.zIndex = 0;
+							console.log("Off 3");
+				    }
+				  },{
+				    title: "Settings",
+				    content: "Control prompting levels, switch categories, and learn about the Fabular Team in Settings Menu.",
+				    target: "btn-system",
+				    placement: "bottom",
+				    xOffset: 850,
+						yOffset: 100, // this will set the left - right
+				    arrowOffset: 260,
+				    onShow: function() {
+							$(".menu").addClass("z-one");
+				      document.getElementById("btn-system").style.zIndex = 9999999999999;
+							console.log("On 2");
+				    },
+				    onNext: function() {
+							$(".menu").removeClass("z-one");
+				      document.getElementById("btn-system").style.zIndex = 0;
+							console.log("Off 2");
+				    }
+				  },{
+				    title: "Rewards",
+				    content: "For every correct request, the items are accumulated in the rewards basket.  Students may click on the basket to review their rewards at any time.",
+				    target: "btn-users",
+				    placement: "top",
+				    xOffset: 100, // this will set the left - right
+				    yOffset: 450,
+				    arrowOffset: 130,
+				    onShow: function() {
+							$(".basket").addClass("highLight");
+							$(".basket").removeClass("animated");
+							$(".basket").addClass("z-one");
+				      document.getElementById("btn-users").style.zIndex = 9999999999999;
+							console.log("On 4");
+				    },
+				    onNext: function() {
+							// $(".options").addClass("animated");
+				      document.getElementById("btn-users").style.zIndex = 0;
+							console.log("Off 4");
+				    }
+				  }],
+				  onStart: function() {
+				    document.getElementById("mask").className = "mask masked";
+						// $(".animated").removeClass("animated");
+						// $(".animated").addClass("animated");
 
+<<<<<<< HEAD
 	// popup tutorial
 	$scope.tutorStatement = false;
 	$scope.tutorial = function() {
@@ -263,6 +359,20 @@ app.controller('fabularController', function($scope, $timeout,$stateParams, $roo
 		}
 	};
 
+=======
+						console.log("on");
+				  },
+				  onEnd: function() {
+				    document.getElementById("mask").className = "mask";
+						// $(".options").addClass("animated");
+						console.log("off");
+					}
+				};
+
+				hopscotch.startTour(tour, 0);
+		}
+	};
+>>>>>>> master
 	//Click function
 	$scope.clicked = function(option) {
 		//Handles correct click events
