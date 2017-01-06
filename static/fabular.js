@@ -61,7 +61,7 @@ app.controller('fabularController', function($scope, $timeout,$stateParams, $roo
 	$scope.settings = 'noshow';
 	var inBasket = [];
 	// var category = $scope.category;
-	$scope.category = 'animals';
+	$scope.category = 'fruits';
 	$scope.clickedBasket = function() {
 		if($scope.clickedStatement === false){
       $scope.clickedStatement = true;

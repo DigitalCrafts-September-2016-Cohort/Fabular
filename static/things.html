@@ -49,7 +49,7 @@
 
  <img class="menu" data-toggle="modal" data-target="#myModal" src="img/menu.png" alt="gear menu" />
 
-<button class="btn" type="button" name="button" ng-click="tutorial()">Tutorial</button>
+<button class="tutorialBtn" type="button" name="button" ng-click="tutorial()">Tutorial</button>
  <!-- Modal -->
  <div class="modal fade" id="myModal" role="dialog">
    <div class="modal-dialog">
@@ -72,9 +72,9 @@
 
          <h1>Categories</h1>
          <div>
-           <button type="button" ng-click="setCategory('fruits')">Fruits</button>
-           <button type="button" ng-click="setCategory('animals')">Animals</button>
-           <button type="button" ng-click="setCategory('toys')">Toys</button>
+           <button class="btn btn-primary" type="button" ng-click="setCategory('fruits')">Fruits</button>
+           <button class="btn btn-primary" type="button" ng-click="setCategory('animals')">Animals</button>
+           <button class="btn btn-primary" type="button" ng-click="setCategory('toys')">Toys</button>
          </div>
 
          <h1>About</h1>
