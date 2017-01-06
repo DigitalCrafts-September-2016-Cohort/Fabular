@@ -253,8 +253,12 @@ text-align: center;
   align-content: center;*/
   margin-top: 4%;
   overflow: scroll;
-  /*width: 80%;*/
+  width: 100%;
   text-align: center;
+  position: absolute;
+  top: 0;
+  left: 0;
+  transform: translate(0%,0%);
 }
 
 /*gear menu*/
@@ -320,8 +324,8 @@ div.hopscotch-bubble {
 }
 
 div.hopscotch-bubble .hopscotch-bubble-arrow-container.up .hopscotch-bubble-arrow-border {
-  border-bottom: 17px solid black;
-  opacity: 0.5;
+  border-bottom: 17px solid #fff;
+  /*opacity: 0.5;*/
   border-left: 20px solid transparent;
   border-right: 20px solid transparent;
 }
@@ -388,7 +392,7 @@ img.more {
   transform: rotate(-12deg);
 }
 
-.btn {
+.tutorialBtn {
   background: #5BAA38;
   background-image: -webkit-linear-gradient(top, #5BAA38, #89C633);
   background-image: -moz-linear-gradient(top, #5BAA38, #89C633);
@@ -406,15 +410,27 @@ img.more {
   position: absolute;
   top: 0;
   left: 0;
-  transform: translate(1018%,202%);
+  transform: translate(960%,202%);
 }
 
-.btn:hover {
+.tutorialBtn:hover {
   background: #9cdb37;
+  color: #fff;
   text-decoration: none;
 }
 
+.basket2 h1 {
+  font-size: 36px;
+  /*position: absolute;
+  top: 0;
+  left: 0;
+  transform: translate(135%,57%);*/
+}
 
+.basket2 img {
+  width: 15%;
+  height: 15%;
+}
 
 /*.mas {
   position: absolute;
