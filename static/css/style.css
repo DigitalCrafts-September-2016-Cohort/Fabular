@@ -59,6 +59,7 @@ img.basket {
   background: rgba(125, 188, 247, 0.7);
   /*background: #3597f2;*/
   width: 700px;
+  text-align: center;
   /*margin-top: -10px;*/
 
 }
@@ -176,7 +177,7 @@ div.wrapper{
     background: #0d255a;
 }
 .basketDiv {
-  height: 400px;
+  /*height: 400px;*/
   display: inline-block;
   overflow: scroll;
   /*border: 4px solid red;*/
@@ -398,7 +399,7 @@ img.more {
   position:absolute;
   top: 0;
   left: 0;
-  transform: translate(30%,4%);
+  transform: translate(108%,0%);
 }
 
 /*.tutorialBtn {
@@ -432,7 +433,7 @@ img.tutorialButton {
   position: absolute;
   top: 0;
   left: 0;
-  transform: translate(588%,200%);
+  transform: translate(588%,354%);
 }
 
 .basket2 h1 {
@@ -444,11 +445,17 @@ img.tutorialButton {
 }
 
 .basket2 img {
-  width: 15%;
-  height: 15%;
+  /*width: 15%;
+  height: 15%;*/
   border-radius: 30%;
 }
 
+.sound {
+  position: absolute;
+  top: 0;
+  left: 0;
+  transform: translate(1079%,68%);
+}
 /*.mas {
   position: absolute;
   top: 0;

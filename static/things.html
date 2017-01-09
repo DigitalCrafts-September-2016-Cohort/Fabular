@@ -5,8 +5,9 @@
      <span id="btn-users" class=""></span>
 </div>
 
-<img src="img/soundon.png" ng-click="sound()" ng-show="!mute" alt="sound on" />
-<img src="img/soundoff.png" ng-click="sound()" ng-show="mute" alt="sound off" />
+<img class="sound" src="img/soundon.png" ng-click="sound()" ng-show="!mute" alt="sound on" />
+<img class="sound" src="img/soundoff.png" ng-click="sound()" ng-show="mute" alt="sound off" />
+<img class="back" src="img/back.png" ng-click="clickedBasket()" ng-show="clickedStatement" alt="back" />
 <div class="app">
   <!-- Game -->
   <div class="wrapper">
@@ -26,7 +27,6 @@
         </div>
     </div>
     <div class="basketDiv" ng-show="clickedStatement">
-      <img class="back" src="img/back.png" ng-click="clickedBasket()" ng-show="clickedStatement" alt="back" />
       <div class="basket2">
         <h1>My Basket</h1>
         <img ng-repeat="item in basket track by $index" ng-src="img/{{item}}.png" alt="item" />
