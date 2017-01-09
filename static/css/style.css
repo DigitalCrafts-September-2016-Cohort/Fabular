@@ -504,6 +504,18 @@ img.tutorialButton {
   }
   img.tutorialButton {
     height: 40%;
-    transform: translate(538%,200%);
+    transform: translate(538%,403%);
+  }
+  .sound {
+    transform: translate(880%,68%);
+  }
+  .back {
+    transform: translate(44%,0%);
+  }
+  .otra {
+    transform: translate(53%,34%);
+  }
+  img.basket {
+    transform: translate(0%, 280%);
   }
 }
