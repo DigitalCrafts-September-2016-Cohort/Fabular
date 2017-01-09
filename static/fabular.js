@@ -344,7 +344,6 @@ app.controller('fabularController', function($scope, $timeout,$stateParams, $roo
 		$scope.basket = inBasket;
 	};
 
-	$scope.Again();
 	$scope.playAgain = function(){
 		$scope.Again();
 	};
