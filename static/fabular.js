@@ -1,4 +1,4 @@
-var app = angular.module('fabular', []);
+var app = angular.module('fabular', ['ui.router']);
 var chelevel = 1;
 var resultLink = [];
 //Holds reward items in basket array
@@ -59,8 +59,8 @@ app.controller('fabularController', function($scope, $timeout,$stateParams, $roo
 	$scope.levels = [1,2,3,4,5];
 	$scope.clickedStatement = false;
 	$scope.settings = 'noshow';
+	$scope.mute = false;
 	var inBasket = [];
-	// var category = $scope.category;
 	$scope.category = 'animals';
 	$scope.clickedBasket = function() {
 		if($scope.clickedStatement === false){
@@ -92,6 +92,13 @@ app.controller('fabularController', function($scope, $timeout,$stateParams, $roo
 		$scope.level = value;
 		$scope.settings = 'noshow';
 		$scope.Again();
+	};
+	$scope.sound = function(){
+		if($scope.mute === true){
+			$scope.mute = false;
+		}else{
+			$scope.mute = true;
+		}
 	};
 	$scope.setCategory = function(value){
 		$scope.category = value;
@@ -146,9 +153,11 @@ app.controller('fabularController', function($scope, $timeout,$stateParams, $roo
 	      $scope.questionArray = [ask_obj,r_num,$scope.item];
 	      $scope.expectedResult = [i_obj,want_obj,r_num,$scope.item,please_obj] ;
 	    }
+			if($scope.mute === false){
 			$scope.questionArray.forEach(function(value){
-				// textToSpeak(value.name);
+				textToSpeak(value.name);
 			});
+			}
 		});
 	};
 	// popup tutorial
@@ -264,7 +273,9 @@ app.controller('fabularController', function($scope, $timeout,$stateParams, $roo
 		//Handles correct click events
 		if (option.name === $scope.expectedResult[$scope.currentIndex].name) {
 			$scope.currentIndex += 1;
-			// textToSpeak(option.name);
+			if($scope.mute === false){
+				textToSpeak(option.name);
+			}
 			$scope.resultLink.push(option);
 			if(chelevel === 1 && $scope.currentIndex === 1){
         $scope.optionsArray = [];
@@ -292,7 +303,9 @@ app.controller('fabularController', function($scope, $timeout,$stateParams, $roo
 	}
     else {
 			//Handles incorrect click events with verbal prompt for correct option
-			// textToSpeak("Please press  "+$scope.expectedResult[$scope.currentIndex].name);
+			if($scope.mute === false){
+				textToSpeak("Please press  "+$scope.expectedResult[$scope.currentIndex].name);
+			}
 			var obj = $scope.optionsArray.filter(function(option){
 					return option.name === $scope.expectedResult[$scope.currentIndex].name;
 				});
@@ -308,9 +321,11 @@ app.controller('fabularController', function($scope, $timeout,$stateParams, $roo
 		//When user creates correct sentence
 		if($scope.expectedResult.length === $scope.resultLink.length){
 			//textToSpeak function reads the sentence
-			$scope.resultLink.forEach(function(value){
-				// textToSpeak(value.name);
-				});
+			if($scope.mute === false){
+				$scope.resultLink.forEach(function(value){
+					textToSpeak(value.name);
+					});
+			}
 			//Pushes 'x' number of prompt items into reward basket for levels 4 and 5
 			if(chelevel === 5){
 				for(let j=0;j<r;j++){
@@ -325,7 +340,9 @@ app.controller('fabularController', function($scope, $timeout,$stateParams, $roo
 				inBasket.push($scope.resultLink[$scope.currentIndex -1].name);
 			}
 		}
-		// textToSpeak("Good Job, Would you like to play again?");
+		if($scope.mute === false){
+			textToSpeak("Well Done!");
+		}
 		$scope.basket = inBasket;
 	};
 
