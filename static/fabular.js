@@ -320,9 +320,11 @@ app.controller('fabularController', function($scope, $timeout,$stateParams, $roo
 		if($scope.expectedResult.length === $scope.resultLink.length){
 			//textToSpeak function reads the sentence
 			if($scope.mute === false){
-				$scope.resultLink.forEach(function(value){
-					textToSpeak(value.name);
-					});
+				if(chelevel != 1){
+					$scope.resultLink.forEach(function(value){
+						textToSpeak(value.name);
+						});
+				}
 			}
 			//Pushes 'x' number of prompt items into reward basket for levels 4 and 5
 			if(chelevel === 5){
