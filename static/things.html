@@ -50,7 +50,7 @@
 
 
  <img class="menu" data-toggle="modal" data-target="#myModal" src="img/menu.png" alt="gear menu" />
-<img class="tutorialButton" src="img/tutorialButton.png" ng-click="tutorial()">
+<img ng-show="!clickedStatement" class="tutorialButton" src="img/tutorialButton.png" ng-click="tutorial()">
  <!-- Modal -->
  <div class="modal fade" id="myModal" role="dialog">
    <div class="modal-dialog">
