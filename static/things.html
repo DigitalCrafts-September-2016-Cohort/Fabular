@@ -44,8 +44,8 @@
 </div>
 <img class="basket" src="img/basket.png" alt="basket" ng-click="clickedBasket()" ng-show="!clickedStatement" />
 <div class="otra">
-  <img class="mole animated bounceInUp" ng-if="expectedResult.length === resultLink.length" ng-click="playAgain()" src="img/mole1.png" alt="mole" />
-  <img class="more animated pulse infinite" ng-if="expectedResult.length === resultLink.length" ng-click="playAgain()" src="img/more.png" alt="more" />
+  <img ng-show="!clickedStatement" class="mole animated bounceInUp" ng-if="expectedResult.length === resultLink.length" ng-click="playAgain()" src="img/mole1.png" alt="mole" />
+  <img ng-show="!clickedStatement" class="more animated pulse infinite" ng-if="expectedResult.length === resultLink.length" ng-click="playAgain()" src="img/more.png" alt="more" />
 </div>
 
 
