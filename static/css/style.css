@@ -519,3 +519,47 @@ img.tutorialButton {
     transform: translate(0%, 280%);
   }
 }
+
+/*For iPhone5 */
+@media screen and (max-width: 568px) {
+  /*img {
+    height: 30%;
+  }*/
+  .wrapper {
+    width: 700%;
+  }
+  div.wrapper {
+    margin: 0;
+  }
+  .sign {
+    transform: translate(218%,121%);
+  }
+  img.logo {
+    transform: translate(332%, 445%) skew(-4deg, 1deg);
+  }
+  .app {
+    left: 72%;
+  }
+  .menu {
+    transform: translate(837%,-14%);
+    height: 57%;
+  }
+  img.tutorialButton {
+    height: 40%;
+    transform: translate(538%,403%);
+  }
+  .sound {
+    transform: translate(839%,68%);
+    height: 57%;
+  }
+  .back {
+    transform: translate(44%,0%);
+  }
+  .otra {
+    transform: translate(53%,34%);
+  }
+  img.basket {
+    transform: translate(6%, 208%);
+    height: 75%;
+  }
+}
