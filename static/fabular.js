@@ -298,6 +298,9 @@ app.controller('fabularController', function($scope, $timeout,$stateParams, $roo
 			if ($scope.currentIndex === 1 || $scope.currentIndex === 2){
 			$scope.optionsArray.splice($scope.optionsArray.indexOf(option), 1);
 		}
+		if($scope.mute === false){
+			textToSpeak("Well Done!");
+		}
 	}
     else {
 			//Handles incorrect click events with verbal prompt for correct option
@@ -339,9 +342,6 @@ app.controller('fabularController', function($scope, $timeout,$stateParams, $roo
 			}else{
 				inBasket.push($scope.resultLink[$scope.currentIndex -1].name);
 			}
-		}
-		if($scope.mute === false){
-			textToSpeak("Well Done!");
 		}
 		$scope.basket = inBasket;
 	};
