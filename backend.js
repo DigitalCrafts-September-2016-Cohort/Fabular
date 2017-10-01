@@ -7,7 +7,6 @@ var app = express();
 app.use(express.static('static'));
 app.use(bodyParser.json());
 
-// mongoose.connect('mongodb://fabular_ack:fabular1234@ds139448.mlab.com:39448/fabular');
 mongoose.connect('mongodb://localhost/fabular');
 mongoose.Promise = bluebird;
 
@@ -35,6 +34,6 @@ app.get('/things/:category',function(request,response){
 });
 
 
-app.listen('3000',function(){
+app.listen('3003',function(){
   console.log("Server is running");
 });
